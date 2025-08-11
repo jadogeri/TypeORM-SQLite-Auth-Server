@@ -3,15 +3,14 @@ import { AppDataSource } from "./src/data-source";
 import express, { Response, Request } from "express";
 import * as dotenv from "dotenv"
 import bodyParser from "body-parser";
-import { resolve } from 'path';
 
-dotenv.config({ path: resolve(__dirname, '../.env') }); // Adjust path as needed
 
-//dotenv.config();
+dotenv.config();
 
 
 AppDataSource.initialize()
     .then(async () => {
+        const port = process.env.PORT || 3500
         const app = express();
         app.use(express.json());
 
@@ -19,8 +18,8 @@ AppDataSource.initialize()
         app.get('/', (req: Request, res : Response) => {
         res.send({message:"Welcome to Server API"});
         });
-            app.listen(3500, () => {
-            console.log("Server running on port 3500");
+            app.listen(port, () => {
+            console.log(`Server running on port ${port}`);
         });
     })
     .catch((error) => console.log(error));

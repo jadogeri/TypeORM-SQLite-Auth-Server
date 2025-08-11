@@ -3,7 +3,8 @@
     "target": "ES2022",
     "module": "CommonJS",
     "outDir": "./dist",
-    "rootDir": "./src",
+    // "rootDir": "./src",
+    "typeRoots": [ "./env.d.ts","./node_modules/@types", "../node_modules/@types", "../../node_modules/@types"],                                  /* Specify multiple folders that act like './node_modules/@types'. */
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -12,9 +13,7 @@
     "emitDecoratorMetadata": true // Often required alongside experimentalDecorators for ORMs like TypeORM
   },
   "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "./**/*.ts", "./*.ts", "./**/**.*.ts","./**/**.*.ts"
+, "jest.config.ts"  ],
+  "exclude": ["./node_modules/*","node_modules"]
 }
