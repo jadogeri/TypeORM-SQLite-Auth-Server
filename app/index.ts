@@ -22,6 +22,8 @@ AppDataSource.initialize()
         app.use(bodyParser.json())
 
         app.use("/api/users", require("./src/routes/userRoutes"));
+        app.use("/api/items", require("./src/routes/itemRoutes"));
+
         app.get('/', (req: Request, res : Response) => {
         res.send({message:"Welcome to Server API"});
         });
