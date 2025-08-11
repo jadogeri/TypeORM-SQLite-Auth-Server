@@ -3,6 +3,10 @@ import { AppDataSource } from "./src/data-source";
 import express, { Response, Request } from "express";
 import * as dotenv from "dotenv"
 import bodyParser from "body-parser";
+import cors from "cors"
+import { corsOptions } from "./src/configs/cors"
+
+
 
 
 dotenv.config();
@@ -13,6 +17,7 @@ AppDataSource.initialize()
         const port = process.env.PORT || 3500
         const app = express();
         app.use(express.json());
+        app.use(cors(corsOptions)) 
 
         app.use(bodyParser.json())
         app.get('/', (req: Request, res : Response) => {
