@@ -1,8 +1,9 @@
 import { constants } from "../constants";
 import { Response, Request,NextFunction } from "express";
 
-const errorHandler = (err : Error, req : Request, res : Response, next : NextFunction) => {
+export const errorHandler = (err : Error, req : Request, res : Response, next : NextFunction) => {
   const statusCode = res.statusCode ? res.statusCode : 500;
+  console.log("status code is ", statusCode)
   switch (statusCode) {
     case constants.VALIDATION_ERROR:
       res.json({
@@ -59,4 +60,3 @@ const errorHandler = (err : Error, req : Request, res : Response, next : NextFun
   }
 };
 
-module.exports = errorHandler;

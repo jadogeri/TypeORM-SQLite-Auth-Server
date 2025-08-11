@@ -3,10 +3,10 @@
     "target": "ES2022",
     "module": "CommonJS",
     "outDir": "./dist",
-    // "rootDir": "./src",
-    "typeRoots": [ "./env.d.ts","./node_modules/@types", "../node_modules/@types", "../../node_modules/@types"],                                  /* Specify multiple folders that act like './node_modules/@types'. */
+    "typeRoots": [ "./env.d.ts","./node_modules/@types", "../node_modules/@types", "../../node_modules/@types","src/**/*.ts"],                                  /* Specify multiple folders that act like './node_modules/@types'. */
     "strict": true,
     "esModuleInterop": true,
+    "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
@@ -14,6 +14,6 @@
   },
   "include": [
     "./**/*.ts", "./*.ts", "./**/**.*.ts","./**/**.*.ts"
-, "jest.config.ts"  ],
+, "jest.config.ts","src/**/*.ts", "src/@types/**/*.d.ts"  ],
   "exclude": ["./node_modules/*","node_modules"]
 }

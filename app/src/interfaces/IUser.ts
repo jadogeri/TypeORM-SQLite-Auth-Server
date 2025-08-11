@@ -1,7 +1,8 @@
+import { IEmail } from "./IEmail";
 
-export interface IUser  {
+export interface IUser extends IEmail {
     username?: string;
-    email?: string;
     password? : string;
     phone? : string;
+
 }
