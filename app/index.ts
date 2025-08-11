@@ -1,8 +1,10 @@
 
 import { AppDataSource } from "./src/data-source";
 import express, { Response, Request } from "express";
-
+import * as dotenv from "dotenv"
 import bodyParser from "body-parser";
+
+dotenv.config();
 
 AppDataSource.initialize()
     .then(async () => {
