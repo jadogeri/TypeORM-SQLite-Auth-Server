@@ -7,4 +7,4 @@ import { currentUser}  from "./currentUser"
 import { deactivateUser } from "./deactivateUser"
 
 
-module.exports = { registerUser, loginUser, logoutUser, currentUser, forgotUser, resetUser, deactivateUser }
+export { registerUser, loginUser, logoutUser, currentUser, forgotUser, resetUser, deactivateUser }
