@@ -10,7 +10,7 @@ router.post("/login",loginUser);
 
 router.post("/logout", logoutUser);
 
-router.post("/reset", resetUser);
+router.put("/reset", resetUser);
 
 router.get("/current", currentUser);
 
@@ -18,5 +18,4 @@ router.post("/forgot", forgotUser);
 
 router.delete("/deactivate", deactivateUser);
 
-
-export default router;
+module.exports = router;

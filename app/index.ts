@@ -20,6 +20,8 @@ AppDataSource.initialize()
         app.use(cors(corsOptions)) 
 
         app.use(bodyParser.json())
+
+        app.use("/api/users", require("./src/routes/userRoutes"));
         app.get('/', (req: Request, res : Response) => {
         res.send({message:"Welcome to Server API"});
         });
