@@ -1,0 +1,51 @@
+{
+  "name": "typeorm-sqlite-auth-server",
+  "version": "1.0.0",
+  "description": "Node + Express app utilizing TypeORM for authorization and authentication of backend apps",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jadogeri/TypeORM-Sqlite-Auth-Server.git"
+  },
+  "keywords": [
+    "backend",
+    "api",
+    "JosephAdogeri",
+    "josephadogeridev",
+    "express",
+    "typescript",
+    "node",
+    "typeorm",
+    "sqlite"
+  ],
+  "author": "Joseph Adogeri",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jadogeri/TypeORM-Sqlite-Auth-Server/issues"
+  },
+  "homepage": "https://github.com/jadogeri/TypeORM-Sqlite-Auth-Server#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "express-async-handler": "^1.2.0",
+    "mongodb": "^6.18.0",
+    "nodemon": "^3.1.10",
+    "reflect-metadata": "^0.2.2",
+    "sqlite3": "^5.1.7",
+    "typeorm": "^0.3.25"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.2.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}
