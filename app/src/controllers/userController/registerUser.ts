@@ -10,6 +10,7 @@ import { IUser } from '../../interfaces/IUser';
 
 const asyncHandler = require("express-async-handler");
 import { Response } from 'express';
+import Validator from '@josephadogeridev/auth-credential-validator-ts';
 
 /**
 *@desc resgiter new user
@@ -26,17 +27,20 @@ export const registerUser = asyncHandler(async (req : Request, res: Response) =>
   if (!username || !email || !password) {
     errorBroadcaster(res,400,"All fields are mandatory!")
   }
-  // if(!isValidEmail(email as string)){
-  //   errorBroadcaster(res,553,"not a  valid email")
+  const validator = new Validator(username as string,email as string,password as string);
 
-  // }
-  // if(!isValidUsername(username as string)){
-  //   errorBroadcaster(res,400,"not a valid username")
+  console.log(validator.getCredential)
+  if(!validator.validateEmail()){
+    errorBroadcaster(res,553,"not a valid email")
 
-  // }
-  // if(!isValidPassword(password as string)){
-  //   errorBroadcaster(res,400,"not a valid password")
-  // }  
+  }
+  if(!validator.validateUsername()){
+    errorBroadcaster(res,400,"not a valid username")
+
+  }
+  if(!validator.validatePassword()){
+    errorBroadcaster(res,400,"not a valid password")
+  }  
 
   res.status(200).json({"message": "register new user"});
 });

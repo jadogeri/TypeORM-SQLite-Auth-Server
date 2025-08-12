@@ -54,6 +54,13 @@ export const errorHandler = (err : Error, req : Request, res : Response, next : 
         stackTrace: err.stack,
       });
       break;
+    case constants.INVALID_RECIPIENT:
+      res.json({
+        title: "Invalie Recipient (email)",
+        message: err.message,
+        stackTrace: err.stack,
+      });
+      break;
     default:
       console.log("No Error, All good !");
       break;
