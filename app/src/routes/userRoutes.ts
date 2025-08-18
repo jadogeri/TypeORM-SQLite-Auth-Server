@@ -4,18 +4,21 @@ import {loginUser, registerUser, logoutUser, resetUser, currentUser, forgotUser,
 
 const router = express.Router();
 
+const validateToken = require("../middlewares/validateTokenHandler");
+
 router.post("/register", registerUser);
 
 router.post("/login",loginUser);
 
-router.post("/logout", logoutUser);
+router.post("/logout",validateToken, logoutUser);
 
 router.put("/reset", resetUser);
 
-router.get("/current", currentUser);
+router.get("/current", validateToken, currentUser);
 
 router.post("/forgot", forgotUser);
 
 router.delete("/deactivate", deactivateUser);
 
 module.exports = router;
+
