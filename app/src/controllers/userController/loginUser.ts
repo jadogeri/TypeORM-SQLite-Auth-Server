@@ -12,10 +12,11 @@ import { IUser } from '../../interfaces/IUser';
 import * as  jwt from "jsonwebtoken";
 import { IAuth } from "../../interfaces/IAuth";
 import * as userService from"../../services/userService"
-import * as authService from"../../services/authService"
+import * as authService from "../../services/authService"
 import { errorBroadcaster } from "../../utils/errorBroadcaster";
 import { IUserLogin } from "../../interfaces/IUserLogin";
 import Validator from "@josephadogeridev/auth-credential-validator-ts";
+import { User } from "../../entities/User";
 // import { isValidEmail} from "../../utils/inputValidation";
 
 /**
@@ -38,7 +39,7 @@ export const loginUser = asyncHandler(async (req : Request, res: Response)  => {
     errorBroadcaster(res,400,"not a valid standard email address")
   }
 
-  const user  = await userService.getByEmail(email);
+  const user : User | null  = await userService.getByEmail(email);
 
   if(user){
 
@@ -51,7 +52,7 @@ export const loginUser = asyncHandler(async (req : Request, res: Response)  => {
 
       let payload = {
         user: {
-          username: user.username as string , email: user.email as string , id: user._id ,
+          username: user.username as string , email: user.email as string , id: user.id ,
         },
       }
       //post fix operator   knowing value cant be undefined
@@ -59,11 +60,11 @@ export const loginUser = asyncHandler(async (req : Request, res: Response)  => {
       const accessToken  =  jwt.sign( payload,secretKey as jwt.Secret,  { expiresIn: "30m" } );
       //add token and id to auth 
       const authUser : IAuth = {
-        id : user._id,
+        id : user.id,
         token : accessToken
       }
 
-      const authenticatedUser = await authService.getById(user._id);
+      const authenticatedUser = await authService.getById(user.id);
       if(!authenticatedUser){
 
         await authService.create(authUser);
