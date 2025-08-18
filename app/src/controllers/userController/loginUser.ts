@@ -10,13 +10,13 @@ import * as bcrypt from "bcrypt";
 import { Response, Request } from 'express';
 import { IUser } from '../../interfaces/IUser';
 import * as  jwt from "jsonwebtoken";
-import { IAuth } from "../../interfaces/IAuth";
 import * as userService from"../../services/userService"
 import * as authService from "../../services/authService"
 import { errorBroadcaster } from "../../utils/errorBroadcaster";
 import { IUserLogin } from "../../interfaces/IUserLogin";
 import Validator from "@josephadogeridev/auth-credential-validator-ts";
 import { User } from "../../entities/User";
+import { IAuth } from "../../interfaces/IAuth";
 import exceptionHandler from "../../utils/exceptionHandler";
 // import { isValidEmail} from "../../utils/inputValidation";
 
