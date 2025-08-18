@@ -1,5 +1,8 @@
-import Auth from "../models/authModel";
-import { IAuth } from "../interfaces/IAuth";
+import { Auth } from "../entities/Auth";
+//import { IAuth } from "../interfaces/IAuth";
+import { AppDataSource } from "../data-source";
+
+    const authRepository = AppDataSource.getRepository(Auth);
 
 
 /**
@@ -9,7 +12,9 @@ import { IAuth } from "../interfaces/IAuth";
    * @throws Throws an error if the database query fails.
    */
 async function getById(id : number) {
-    return Auth.findOne({ id : id });
+    console.log("Loading user by ID...");
+    const auth : Auth | null = await authRepository.findOneBy({ id: id });
+    return auth;
   }
 // /**
 //  * Retrieves an authentication record by the provided token.
@@ -57,5 +62,6 @@ async function getById(id : number) {
 // }
 
 
+export { getById };
 
 //export { getById, getByToken, create, update, remove };
