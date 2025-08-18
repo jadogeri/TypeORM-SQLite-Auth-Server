@@ -78,7 +78,7 @@ try{
       //reset to zero if account is not locked
       if(user.failedLogins as number > 0){
 
-        const resetUser  ={
+        const resetUser: User  ={
           failedLogins: 0
         }
 
