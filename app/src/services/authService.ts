@@ -1,6 +1,7 @@
 import { Auth } from "../entities/Auth";
 //import { IAuth } from "../interfaces/IAuth";
 import { AppDataSource } from "../data-source";
+import { IAuth } from "../interfaces/IAuth";
 
     const authRepository = AppDataSource.getRepository(Auth);
 
@@ -36,20 +37,17 @@ async function getById(id : number) {
 //   return  Auth.create(auth);
 // }
 
-// /**
-//  * Updates a user document in the database by its ID. 
-//  * If the user does not exist, a new document will be created. 
-//  * @param _id - The ID of the user to update. 
-//  * @param user - The user data to update or insert. 
-//  * @returns A promise that resolves to the updated or created user document. 
-//  * @throws MongooseError if the update operation fails.
-//  */
-// async function update(auth : IAuth ) {
-
-//     return Auth.updateOne({ id : auth.id}, // Filter
-//                           {$set: {token : auth.token }}, // Update
-//                           {upsert: true});
-// }
+/**
+ * Updates a user document in the database by its ID. 
+ * If the user does not exist, a new document will be created. 
+ * @param _id - The ID of the user to update. 
+ * @param user - The user data to update or insert. 
+ * @returns A promise that resolves to the updated or created user document. 
+ * @throws MongooseError if the update operation fails.
+ */
+async function update(auth : IAuth ) {
+    await authRepository.save(auth);
+}
 
 // /**
 //  * Deletes a user from the database by their unique identifier.
