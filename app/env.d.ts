@@ -1,4 +1,6 @@
 import { IUser } from "./src/interfaces/IUser";
+import { IUserLogin } from "./src/interfaces/IUserLogin";
+
 declare global {
     namespace Express {
       interface Request {
@@ -7,7 +9,7 @@ declare global {
             email:string
             id:mongoose.Types.ObjectId
         },
-        body: IUser //| IUserReset | IUserDeactivated | IUserForgot | IUserAuthorized
+        body: IUser | IUserLogin //| IUserReset | IUserDeactivated | IUserForgot | IUserAuthorized
       }
     }
     namespace NodeJS {

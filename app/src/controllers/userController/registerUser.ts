@@ -53,17 +53,13 @@ export const registerUser = asyncHandler(async (req : Request, res: Response) =>
   }
   //Hash password
   const hashedPassword : string = await hash(password as string, parseInt(process.env.BCRYPT_SALT_ROUNDS as string));
-try{
-  const createdUser = await userService.create({username, email, password : hashedPassword, phone})
-  console.log("line 48",JSON.stringify(createdUser, null,2))
-  res.status(200).json(createdUser);
+  try{
+    const createdUser = await userService.create({username, email, password : hashedPassword, phone})
+    console.log("line 48",JSON.stringify(createdUser, null,2))
+    res.status(200).json(createdUser);
 
-}catch(error : unknown){
-  exceptionHandler(error, errorBroadcaster, res);
- 
-}finally {
-        // if (connection) {
-        //     await connection.close();
-        // }
-    }
+  }catch(error : unknown){
+    exceptionHandler(error, errorBroadcaster, res);
+  
+  }
 });
