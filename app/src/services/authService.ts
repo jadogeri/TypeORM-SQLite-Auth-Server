@@ -27,15 +27,16 @@ async function getById(id : number) {
 //   return Auth.findOne({ token : token });
 // }
 
-// /**
-//  * Creates a new user in the database.
-//  * @param user - An object implementing the IUser interface representing the user to be created.
-//  * @returns A promise that resolves to the created user object.
-//  * @throws Throws an error if the user creation fails due to validation or database issues.
-//  */
-// async function create(auth : IAuth) {
-//   return  Auth.create(auth);
-// }
+/**
+ * Creates a new user in the database.
+ * @param user - An object implementing the IUser interface representing the user to be created.
+ * @returns A promise that resolves to the created user object.
+ * @throws Throws an error if the user creation fails due to validation or database issues.
+ */
+async function create(auth : IAuth) {
+
+    return await authRepository.save(auth);
+}
 
 /**
  * Updates a user document in the database by its ID. 
@@ -46,7 +47,7 @@ async function getById(id : number) {
  * @throws MongooseError if the update operation fails.
  */
 async function update(auth : IAuth ) {
-    await authRepository.save(auth);
+    return await authRepository.save(auth);
 }
 
 // /**
@@ -60,6 +61,6 @@ async function update(auth : IAuth ) {
 // }
 
 
-export { getById };
+export { getById, update, create };
 
 //export { getById, getByToken, create, update, remove };
