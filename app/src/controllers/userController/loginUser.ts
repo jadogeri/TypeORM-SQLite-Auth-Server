@@ -17,6 +17,7 @@ import { errorBroadcaster } from "../../utils/errorBroadcaster";
 import { IUserLogin } from "../../interfaces/IUserLogin";
 import Validator from "@josephadogeridev/auth-credential-validator-ts";
 import { User } from "../../entities/User";
+import exceptionHandler from "../../utils/exceptionHandler";
 // import { isValidEmail} from "../../utils/inputValidation";
 
 /**
@@ -38,7 +39,7 @@ export const loginUser = asyncHandler(async (req : Request, res: Response)  => {
   if(!validator.validateEmail()){
     errorBroadcaster(res,400,"not a valid standard email address")
   }
-
+try{
   const user : User | null  = await userService.getByEmail(email);
 
   if(user){
@@ -105,6 +106,10 @@ export const loginUser = asyncHandler(async (req : Request, res: Response)  => {
     }
   }else{
     res.status(400).json({ message: "email does not exist" });
+  }
+   }catch(error : unknown){
+    exceptionHandler(error, errorBroadcaster, res);
+  
   }
 
 });
