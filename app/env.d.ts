@@ -1,5 +1,6 @@
 import { IUser } from "./src/interfaces/IUser";
 import { IUserLogin } from "./src/interfaces/IUserLogin";
+import { IJwtPayload } from "./src/interfaces/IJWTPayload";
 
 declare global {
     namespace Express {
@@ -7,9 +8,9 @@ declare global {
         user: {
             username:string;
             email:string
-            id:mongoose.Types.ObjectId
+            id:number
         },
-        body: IUser | IUserLogin //| IUserReset | IUserDeactivated | IUserForgot | IUserAuthorized
+        body: IUser | IUserLogin  //| IUserReset | IUserDeactivated | IUserForgot | IUserAuthorized
       }
     }
     namespace NodeJS {

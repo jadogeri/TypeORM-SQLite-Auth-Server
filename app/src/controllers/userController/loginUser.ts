@@ -73,14 +73,13 @@ try{
 
         await authService.update(authUser);;     
       }
+      
 
       //if failed logins > 0, 
       //reset to zero if account is not locked
       if(user.failedLogins as number > 0){
 
-        const resetUser: User  ={
-          failedLogins: 0
-        }
+        const resetUser: User = {...user, failedLogins: 0}
 
         await userService.update(user.id, resetUser)
       }
@@ -90,17 +89,17 @@ try{
       if(user.failedLogins === 3){
 
         user.isEnabled = false;
-        await userService.update(user._id, user)
-              const recipient : Recipient = {
-                username : user.username,
-                email : user.email,
-                company : process.env.COMPANY
-              }
-        sendEmail("locked-account",recipient )
+        await userService.update(user.id, user)
+        //       const recipient : Recipient = {
+        //         username : user.username,
+        //         email : user.email,
+        //         company : process.env.COMPANY
+        //       }
+        // sendEmail("locked-account",recipient )
         res.status(400).json("Account is locked beacause of too many failed login attempts. Use forget account to access acount");
 
       }else{
-        await userService.update(user._id, user)    
+        await userService.update(user.id, user)    
       }      
       res.status(400).json({ message: "email or password is incorrect" });
     }
