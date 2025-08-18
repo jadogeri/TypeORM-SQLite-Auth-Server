@@ -2,7 +2,7 @@ import { AppDataSource } from "../data-source";
 import { User } from "../entities/User";
 import { IUser } from "../interfaces/IUser";
 
-        const userRepository = AppDataSource.getRepository(User);
+const userRepository = AppDataSource.getRepository(User);
 
 /**
  * Creates a new user in the database.
@@ -27,7 +27,20 @@ async function getByEmail(email : string) {
   return user;
 }
 
-export {create, getByEmail}
+/**
+ * Updates a user document in the database by its ID. 
+ * If the user does not exist, a new document will be created. 
+ * @param _id - The ID of the user to update. 
+ * @param user - The user data to update or insert. 
+ * @returns A promise that resolves to the updated or created user document. 
+ * @throws MongooseError if the update operation fails.
+ */
+async function update(id : number, user : User) {
+
+  return await userRepository.save(user)
+}
+
+export {create, getByEmail, update}
 
 /**
  *  // READ (Find a single user by ID)

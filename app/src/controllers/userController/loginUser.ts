@@ -82,7 +82,7 @@ try{
           failedLogins: 0
         }
 
-        await userService.update(user._id, resetUser)
+        await userService.update(user.id, resetUser)
       }
         res.status(200).json({ accessToken }); 
     }else{ 
