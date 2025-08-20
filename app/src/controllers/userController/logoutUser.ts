@@ -26,25 +26,18 @@ export const logoutUser = asyncHandler(async (req: Request, res : Response) => {
   if(!token){ 
     errorBroadcaster(res,400,"field token is mandatory");
   } 
-  const authenticatedUser = await authService.getByToken(token)
+  const authenticatedUser = await authService.getByToken(token as string)
   if(!authenticatedUser){
     res.status(401).json({ message: "Already logged out" });
   }
   //remove auth from Auth Collection
   
-  let logoutAuth : IAuth = {
-    token : token
-  }
-  await authService.remove(logoutAuth)
-
-
+  await authService.remove(authenticatedUser?.id as number)
   
   res.status(200).json({ message: "logout the user" });
    }catch(error : unknown){
-    exceptionHandler(error, errorBroadcaster, res);
-  
+    exceptionHandler(error, errorBroadcaster, res);  
   }
 });
-
 
 

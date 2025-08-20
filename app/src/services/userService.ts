@@ -35,12 +35,22 @@ async function getByEmail(email : string) {
  * @returns A promise that resolves to the updated or created user document. 
  * @throws MongooseError if the update operation fails.
  */
-async function update(id : number, user : User) {
+async function update(user : User) {
 
   return await userRepository.save(user)
 }
 
-export {create, getByEmail, update}
+/**
+ * Deletes a user from the database by their unique identifier.
+ * @param _id - The ObjectId of the user to be deleted.
+ * @returns A promise that resolves to the deleted user document or null if not found.
+ * @throws MongooseError if there is an issue with the database operation.
+ */
+async function remove(id : number) {
+  return await userRepository.delete({id: id})
+}
+
+export {create, getByEmail, update, remove}
 
 /**
  *  // READ (Find a single user by ID)

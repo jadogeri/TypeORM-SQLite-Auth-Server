@@ -61,15 +61,19 @@ try{
       const accessToken  =  jwt.sign( payload,secretKey as jwt.Secret,  { expiresIn: "30m" } );
       //add token and id to auth 
       const authUser : IAuth = {
-        id : user.id,
+        user : user,
         token : accessToken
       }
 
-      const authenticatedUser = await authService.getById(user.id);
-      if(!authenticatedUser){
+      console.log("authuser to save ", authUser)
 
+      const authenticatedUser = await authService.getByUserId(user.id);
+      console.log("authenuser ==", authenticatedUser)
+      if(!authenticatedUser){
+console.log("creating aut.....................................")
         await authService.create(authUser);
       }else{
+console.log("updating aut.....................................")
 
         await authService.update(authUser);;     
       }
@@ -81,7 +85,7 @@ try{
 
         const resetUser: User = {...user, failedLogins: 0}
 
-        await userService.update(user.id, resetUser)
+        await userService.update(resetUser)
       }
         res.status(200).json({ accessToken }); 
     }else{ 
@@ -89,7 +93,7 @@ try{
       if(user.failedLogins === 3){
 
         user.isEnabled = false;
-        await userService.update(user.id, user)
+        await userService.update(user)
         //       const recipient : Recipient = {
         //         username : user.username,
         //         email : user.email,
@@ -99,7 +103,7 @@ try{
         res.status(400).json("Account is locked beacause of too many failed login attempts. Use forget account to access acount");
 
       }else{
-        await userService.update(user.id, user)    
+        await userService.update(user)    
       }      
       res.status(400).json({ message: "email or password is incorrect" });
     }

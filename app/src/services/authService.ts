@@ -2,6 +2,7 @@ import { Auth } from "../entities/Auth";
 //import { IAuth } from "../interfaces/IAuth";
 import { AppDataSource } from "../data-source";
 import { IAuth } from "../interfaces/IAuth";
+import { User } from "../entities/User";
 
     const authRepository = AppDataSource.getRepository(Auth);
 
@@ -12,20 +13,23 @@ import { IAuth } from "../interfaces/IAuth";
    * @returns A promise that resolves to the found authentication record or null if not found.
    * @throws Throws an error if the database query fails.
    */
-async function getById(id : number) {
-    console.log("Loading user by ID...");
-    const auth : Auth | null = await authRepository.findOneBy({ id: id });
+async function getByUserId(userId : number) {
+    const auth : Auth | null = await authRepository.findOne({
+    where: { user: { id: userId }},
+});
     return auth;
   }
-// /**
-//  * Retrieves an authentication record by the provided token.
-//  * @param token - The token string used to find the corresponding Auth record.
-//  * @returns A promise that resolves to the found Auth record or null if not found.
-//  * @throws Throws an error if the database query fails.
-//  */
-// async function getByToken(token : string) {
-//   return Auth.findOne({ token : token });
-// }
+/**
+ * Retrieves an authentication record by the provided token.
+ * @param token - The token string used to find the corresponding Auth record.
+ * @returns A promise that resolves to the found Auth record or null if not found.
+ * @throws Throws an error if the database query fails.
+ */
+async function getByToken(token : string) {
+    const auth : Auth | null = await authRepository.findOneBy({  });
+
+    return auth
+}
 
 /**
  * Creates a new user in the database.
@@ -47,20 +51,41 @@ async function create(auth : IAuth) {
  * @throws MongooseError if the update operation fails.
  */
 async function update(auth : IAuth ) {
-    return await authRepository.save(auth);
+  const createdAuth = await authRepository.findOne({
+    where: { user: { id: auth.user?.id }}}) as Auth
+    createdAuth.token = auth.token as string
+    //return await authRepository.update({token:auth.token},{ user: { id: auth?.user?.id }})
+    return await authRepository.save(createdAuth);
+
 }
 
-// /**
-//  * Deletes a user from the database by their unique identifier.
-//  * @param _id - The ObjectId of the user to be deleted.
-//  * @returns A promise that resolves to the deleted user document or null if not found.
-//  * @throws MongooseError if there is an issue with the database operation.
-//  */
-// async function remove(auth : IAuth) {
-//   return Auth.findOneAndDelete(auth);
+
+
+//     return await authRepository.update({
+//     token: auth.token,where: { user: { id: id }},
+// });
 // }
 
+/**
+ * Deletes a user from the database by their unique identifier.
+ * @param _id - The ObjectId of the user to be deleted.
+ * @returns A promise that resolves to the deleted user document or null if not found.
+ * @throws MongooseError if there is an issue with the database operation.
+ */
+async function removeByUser(user: User) {
+  return await authRepository.delete({user: user});
+}
 
-export { getById, update, create };
+/**
+ * Deletes a user from the database by their unique identifier.
+ * @param _id - The ObjectId of the user to be deleted.
+ * @returns A promise that resolves to the deleted user document or null if not found.
+ * @throws MongooseError if there is an issue with the database operation.
+ */
+async function remove(id: number) {
+  return await authRepository.delete({id: id});
+}
 
-//export { getById, getByToken, create, update, remove };
+
+export { getByUserId, getByToken, update, create, remove, removeByUser };
+

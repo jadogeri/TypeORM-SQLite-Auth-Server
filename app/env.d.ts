@@ -2,6 +2,8 @@ import { IUser } from "./src/interfaces/IUser";
 import { IUserLogin } from "./src/interfaces/IUserLogin";
 import { IJwtPayload } from "./src/interfaces/IJWTPayload";
 import { IUserAuthorized } from "./src/interfaces/IUserAuthorized";
+import { IUserDeactivated } from "./src/interfaces/IUserDeactivated";
+import { IUserForgot } from "./src/interfaces/IUserForgot";
 
 declare global {
     namespace Express {
@@ -11,7 +13,7 @@ declare global {
             email:string
             id:number
         },
-        body: IUser | IUserLogin | IUserAuthorized  //| IUserReset | IUserDeactivated | IUserForgot | IUserAuthorized
+        body: IUser | IUserLogin | IUserAuthorized  | IUserDeactivated | IUserForgot//| IUserReset | IUserDeactivated | IUserForgot | IUserAuthorized
       }
     }
     namespace NodeJS {

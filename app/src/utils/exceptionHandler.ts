@@ -27,10 +27,17 @@ const exceptionHandler = (error: unknown,errorBroadcaster: Function, res : Respo
     } else if (error instanceof SyntaxError) {
       // Catch specifically the JSON parsing error
       console.error('Invalid JSON received:', error.message);
+      errorBroadcaster(res, 500, error.message);
+
     } else if (error instanceof Error) {
         console.error("An unexpected error occurred:", error.message);
-    } else {
+        errorBroadcaster(res, 500, error.message);
+
+        
+    } else {      
         console.error("An unknown error occurred:", error);
+                errorBroadcaster(res, 500, error);
+
     }
 
 }
