@@ -7,7 +7,7 @@ export class Item {
     id: number;
 
     @Column()
-    token: string;
+    name: string;
 
     @OneToOne(()=> User)
     @JoinColumn() 
@@ -20,10 +20,10 @@ export class Item {
     updatedAt!: Date; // This column will automatically store the last update date
 
 
-    constructor(id :number, user: User, token: string){
+    constructor(id :number, user: User, name: string){
         this.id = id;
         this.user = user;
-        this.token = token
+        this.name = name
     }
 
 }
