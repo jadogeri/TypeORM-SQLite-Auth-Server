@@ -1,15 +1,20 @@
 import express from "express";
 
-import {addItem, retrieveItem, deleteItem, updateItem} from "../controllers/itemController/index";
+import {addItem, getItem, getItems, deleteItem, deleteItems, updateItem} from "../controllers/itemController/index";
 
 const router = express.Router();
 
-router.post("/add", addItem);
+router.post("/", addItem);
 
-router.put("/update", updateItem);
+router.put("/", updateItem);
 
-router.get("/retrieve", retrieveItem);
+router.get("/:id", getItem);
 
-router.delete("/delete", deleteItem);
+router.get("/", getItems);
+
+router.delete("/:id", deleteItem);
+
+router.delete("/", deleteItems);
+
 
 module.exports = router;
