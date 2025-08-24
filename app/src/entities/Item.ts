@@ -9,9 +9,7 @@ export class Item {
     @Column()
     name: string;
     
-    //@JoinColumn({ name: 'userId' }) // Customize foreign key column name
     @ManyToOne(() => User, (user) => user.items, { onDelete: 'CASCADE' })
-    // @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
     @JoinColumn()
     user: User;
 
