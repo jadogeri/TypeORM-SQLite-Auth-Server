@@ -2,7 +2,7 @@
  * @author Joseph Adogeri
  * @version 1.0
  * @since 11-AUG-2025
- * @description function to delete an item in database
+ * @description function to delete an item by user in database
  */
 
 const asyncHandler = require("express-async-handler");
