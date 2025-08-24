@@ -1,3 +1,10 @@
+/**
+ * @author Joseph Adogeri
+ * @version 1.0
+ * @since 24-AUG-2025
+ * @description single module to export item routes
+ */
+
 import express from "express";
 
 import {addItem, getItem, getItems, deleteItem, deleteItems, updateItem} from "../controllers/itemController/index";
