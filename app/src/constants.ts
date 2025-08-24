@@ -1,3 +1,11 @@
+/**
+ * @author Joseph Adogeri
+ * @version 1.0
+ * @since 24-AUG-2025
+ * @description constants of error status codes
+ * 
+ */
+
 export const constants = {
   VALIDATION_ERROR: 400,
   UNAUTHORIZED: 401,
