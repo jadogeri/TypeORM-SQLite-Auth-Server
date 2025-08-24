@@ -2,7 +2,7 @@
  * @author Joseph Adogeri
  * @version 1.0
  * @since 24-AUG-2025
- * @description function toget all items by user in database
+ * @description function to get a single item by user in database
  */
 
 const asyncHandler = require("express-async-handler");
@@ -17,8 +17,8 @@ import { User } from '../../entities/User';
 
 
 /**
-*@desc Get All Items
-*@route GET /api/itemss/
+*@desc Get single Item
+*@route GET /api/items/id
 *@access private
 */
 
