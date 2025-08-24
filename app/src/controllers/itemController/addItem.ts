@@ -2,7 +2,7 @@
  * @author Joseph Adogeri
  * @version 1.0
  * @since 11-AUG-2025
- * @description function to add an item to database
+ * @description function to add an item by user to database
  */
 
 const asyncHandler = require("express-async-handler");
