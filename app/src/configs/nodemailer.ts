@@ -1,6 +1,6 @@
 /**
  * @author      Joseph Adogeri
- * @since       27-AUG-2024
+ * @since       24-AUG-2025
  * @version     1.0
  * @description configuration setting for nodemailer 
  *  
