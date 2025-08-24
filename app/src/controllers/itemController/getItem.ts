@@ -1,8 +1,8 @@
 /**
  * @author Joseph Adogeri
  * @version 1.0
- * @since 11-AUG-2025
- *
+ * @since 24-AUG-2025
+ * @description function toget all items by user in database
  */
 
 const asyncHandler = require("express-async-handler");
@@ -33,27 +33,25 @@ export const getItem = asyncHandler(async (req : IJwtPayload, res: Response)  =>
   const itemId = parseInt(stringId);
 
   try{
-  console.log("user extracted from jwt token === ",JSON.stringify(req.user,null,3))
-  if(req.user){
-    const payload = req.user;
-    const user : User | null = await userService.getById(payload.id);
-    if(!user){
-      res.status(400).json("user does not exist");
+    console.log("user extracted from jwt token === ",JSON.stringify(req.user,null,3))
+    if(req.user){
+      const payload = req.user;
+      const user : User | null = await userService.getById(payload.id);
+      if(!user){
+        res.status(400).json("user does not exist");
+      }
+      const item : Item | null  = await itemService.getByUserId(itemId, user as User) ;
+      if(!item){
+        res.status(400).json("item does not exist");
+      }
+      console.log(JSON.stringify(item,null,3))    
+      res.status(200).json(item);
     }
-    console.log("user in database", JSON.stringify(user, null, 4))
-    const item : Item | null  = await itemService.getByUserId(itemId, user as User) ;
-    if(!item){
-      res.status(400).json("item does not exist");
+    else{
+      res.status(400).json({ message: "Invalid User" });
     }
-    console.log(JSON.stringify(item,null,3))    
-    res.status(200).json(item);
-  }
-  else{
-  res.status(400).json({ message: "Invalid User" });
-  }
    }catch(error : unknown){
-    exceptionHandler(error, errorBroadcaster, res);
-  
+    exceptionHandler(error, errorBroadcaster, res);  
   }
 
 });
