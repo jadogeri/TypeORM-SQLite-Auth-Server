@@ -2,7 +2,7 @@
  * @author Joseph Adogeri
  * @version 1.0
  * @since 24-AUG-2025
- * @description function to retieve user details using token
+ * @description function to retrieve user details using token
  */
 
 const asyncHandler = require("express-async-handler");
