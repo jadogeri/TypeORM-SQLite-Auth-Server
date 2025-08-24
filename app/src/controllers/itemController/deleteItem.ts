@@ -16,7 +16,7 @@ import { User } from '../../entities/User';
 
 /**
 *@desc delete an item
-*@route DELETE /api/items
+*@route DELETE /api/items/id
 *@access private
 */
 
