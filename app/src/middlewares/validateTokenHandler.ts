@@ -1,3 +1,9 @@
+/**
+ * @author Joseph Adogeri
+ * @version 1.0
+ * @since 24-AUG-2025
+ * @description middleware to validate JWT 
+ */
 import { Response, NextFunction } from "express";
 import {jwtDecode} from 'jwt-decode';
 const asyncHandler = require("express-async-handler");
