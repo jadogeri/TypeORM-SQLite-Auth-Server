@@ -1,3 +1,10 @@
+
+/**
+ * @author Joseph Adogeri
+ * @version 1.0
+ * @since 24-AUG-2025
+ * @description middleware to handle multiple error codes
+ */
 import { constants } from "../constants";
 import { Response, Request,NextFunction } from "express";
 
