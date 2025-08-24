@@ -9,7 +9,7 @@ export class Auth {
     @Column()
     token: string;
 
-    @OneToOne(()=> User)
+    @OneToOne(()=> User, { onDelete: 'CASCADE' })
     @JoinColumn() 
     user: User;
 

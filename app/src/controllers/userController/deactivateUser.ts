@@ -13,6 +13,8 @@ import { IUserDeactivated } from '../../interfaces/IUserDeactivated';
 import { errorBroadcaster } from "../../utils/errorBroadcaster";
 import * as userService from "../../services/userService"
 import * as authService from "../../services/authService"
+import * as itemService from "../../services/itemService"
+
 import * as bcrypt from "bcrypt"
 //import { isValidEmail } from '../../utils/inputValidation';
 import { IAuth } from '../../interfaces/IAuth';
@@ -54,13 +56,16 @@ export const deactivateUser = asyncHandler(async (req: Request, res : Response) 
   if(!registeredUser){
     errorBroadcaster(res,400,"Email does not exist");
   }
+console.log("printer..............................................................1")
 
   if(!(await bcrypt.compare(password as string,registeredUser?.password as string))) {
     errorBroadcaster(res,400,"Invalid password or email");
   }
+console.log("printer..............................................................2")
 
-    await authService.removeByUser(registeredUser as User)
-  
+    //await authService.removeByUser(registeredUser as User)
+  console.log("printer..............................................................3")
+
   await userService.remove(registeredUser!.id)
 
     // const recipient : Recipient = {
@@ -76,5 +81,6 @@ export const deactivateUser = asyncHandler(async (req: Request, res : Response) 
   
   }
 });
+
 
 
