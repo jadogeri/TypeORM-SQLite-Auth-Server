@@ -40,3 +40,5 @@ yarn-error.*
 # database
 database.sqlite
 sqlitedb.sqlite
+
+Dockerfile
