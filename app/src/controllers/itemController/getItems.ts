@@ -1,8 +1,8 @@
 /**
  * @author Joseph Adogeri
  * @version 1.0
- * @since 11-AUG-2025
- *
+ * @since 24-AUG-2025
+ * @description function to get all items by user in database
  */
 
 const asyncHandler = require("express-async-handler");
@@ -17,24 +17,22 @@ import { errorBroadcaster } from '../../utils/errorBroadcaster';
 /**
 *@desc Get All Items
 *@route GET /api/itemss/
-*@access public
+*@access private
 */
 
 export const getItems = asyncHandler(async (req : IJwtPayload, res: Response)  =>  {
 
   try{
-  console.log("user extracted from jwt token === ",JSON.stringify(req.user,null,3))
-  if(req.user){
-    const items : Item[] = await itemService.getAll(req);
-    console.log(JSON.stringify(items,null,3))    
-    res.status(200).json(items);
-  }
-  else{
-  res.status(400).json({ message: "Invalid User" });
-  }
+    if(req.user){
+      const items : Item[] = await itemService.getAll(req);
+      console.log(JSON.stringify(items,null,3))    
+      res.status(200).json(items);
+    }
+    else{
+      res.status(400).json({ message: "Invalid User" });
+    }
    }catch(error : unknown){
-    exceptionHandler(error, errorBroadcaster, res);
-  
+    exceptionHandler(error, errorBroadcaster, res);  
   }
 
 });
