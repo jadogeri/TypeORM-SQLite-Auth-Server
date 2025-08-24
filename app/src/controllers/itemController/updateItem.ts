@@ -1,8 +1,8 @@
 /**
  * @author Joseph Adogeri
  * @version 1.0
- * @since 11-AUG-2025
- *
+ * @since 24-AUG-2025
+ * @description function to update a single item by user in database
  */
 
 const asyncHandler = require("express-async-handler");
@@ -19,7 +19,7 @@ import { UpdateResult } from 'typeorm';
 
 /**
 *@desc update an item
-*@route PUT /api/items/update
+*@route PUT /api/items/id
 *@access private
 */
 
@@ -37,7 +37,8 @@ export const updateItem = asyncHandler(async (req : IJwtPayload, res: Response) 
     res.status(200).json({"message": "name must be provided"});
   }
 
-    const payload = req.user;
+  const payload = req.user;
+  try{
     const user : User | null = await userService.getById(payload.id);
     if(!user){
       res.status(400).json("user does not exist");
@@ -48,9 +49,11 @@ export const updateItem = asyncHandler(async (req : IJwtPayload, res: Response) 
       res.status(400).json("item does not exist");
     }
     const updateResult: UpdateResult = await itemService.update(itemId, req.body)
-      if(updateResult.affected === 1){
-    res.status(200).json({"message": `updated item id '${itemId}' of user '${user?.username}' `});
-
+    if(updateResult.affected === 1){
+      res.status(200).json({"message": `updated item id '${itemId}' of user '${user?.username}' `});
+    }
+    res.status(200).json({"message": name});
+  }catch(error: unknown){
+    exceptionHandler(error, errorBroadcaster, res);  
   }
-  res.status(200).json({"message": name});
 });
