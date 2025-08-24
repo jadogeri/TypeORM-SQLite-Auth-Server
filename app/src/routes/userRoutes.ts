@@ -1,3 +1,10 @@
+/**
+ * @author Joseph Adogeri
+ * @version 1.0
+ * @since 24-AUG-2025
+ * @description single module to export user routes
+ */
+
 import express from "express";
 
 import {loginUser, registerUser, logoutUser, resetUser, currentUser, forgotUser, deactivateUser} from "../controllers/userController/index";
