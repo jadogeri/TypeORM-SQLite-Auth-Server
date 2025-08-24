@@ -19,7 +19,7 @@ import { User } from '../../entities/User';
 /**
 *@desc Get All Items
 *@route GET /api/itemss/
-*@access public
+*@access private
 */
 
 export const getItem = asyncHandler(async (req : IJwtPayload, res: Response)  =>  {
