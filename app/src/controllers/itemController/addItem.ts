@@ -16,8 +16,9 @@ import exceptionHandler from '../../utils/exceptionHandler';
 /**
 *@desc Add an Item
 *@route POST /api/Items/
-*@access public
+*@access private
 */
+
 
 export const addItem = asyncHandler(async (req: IItemCreateRequest, res : Response)  => {
 
