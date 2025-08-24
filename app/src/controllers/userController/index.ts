@@ -1,3 +1,10 @@
+/**
+ * @author Joseph Adogeri
+ * @version 1.0
+ * @since 24-AUG-2025
+ * @description Single export for all user controller functions
+ */
+
 import { registerUser }  from "./registerUser";
 import { loginUser } from "./loginUser";
 import { logoutUser }  from "./logoutUser"
