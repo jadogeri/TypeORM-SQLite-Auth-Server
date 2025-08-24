@@ -50,7 +50,21 @@ async function remove(id : number) {
   return await userRepository.delete({id: id})
 }
 
-export {create, getByEmail, update, remove}
+
+/**
+ *  // READ (Find a single user by ID)
+    console.log("Loading user by ID...");
+    const userById = await userRepository.findOneBy({ id: newUser.id });
+    console.log("User by ID:", userById);
+ */
+  async function getById(userId : number) {
+    const user : User | null = await userRepository.findOne({
+    where: { id: userId },
+});
+    return user;
+}
+
+export {create, getByEmail, getById, update, remove}
 
 /**
  *  // READ (Find a single user by ID)

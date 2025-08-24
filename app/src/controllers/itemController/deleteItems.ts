@@ -7,6 +7,13 @@
 
 const asyncHandler = require("express-async-handler");
 import { Response } from 'express';
+import { IJwtPayload } from '../../interfaces/IJWTPayload';
+import * as itemService from"../../services/itemService"
+import * as userService from"../../services/userService"
+import { Item } from '../../entities/Item';
+import exceptionHandler from '../../utils/exceptionHandler';
+import { errorBroadcaster } from '../../utils/errorBroadcaster';
+import { User } from '../../entities/User';
 
 /**
 *@desc delete an item
@@ -14,7 +21,23 @@ import { Response } from 'express';
 *@access private
 */
 
-export const deleteItems = asyncHandler(async (req : Request, res: Response) => {
+export const deleteItems = asyncHandler(async (req : IJwtPayload, res: Response) => {
 
-  res.status(200).json({"message": "delete an item"});
+    if(req.user){
+    const items : Item[] = await itemService.getAll(req);
+    if(items.length === 0){
+      res.status(200).json({ message: `all items of user id : ${req.user.id} already empty` });
+    }
+      
+    await itemService.removeAll(req)
+    .then(()=>{
+      res.status(200).json({ message: `deleted all items of user id : ${req.user.id}` });
+
+    });
+  }
+  else{
+  res.status(400).json({ message: "Invalid User" });
+  }
+
 });
+

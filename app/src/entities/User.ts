@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany, JoinColumn } from "typeorm";
+import { Item } from "./Item";
 
 @Entity()
 export class User {
@@ -16,6 +17,11 @@ export class User {
 
     @Column({type: "varchar", length: 20})
     phone: string;
+
+    
+    @OneToMany(() => Item, (item) => item.user, { onDelete: 'CASCADE',cascade: ["update","remove"] }) // 'post.user' is the inverse side in the Post entity
+    @JoinColumn()
+    items: Item[];
 
     @Column({ default: true, type:"boolean" })
     isEnabled: boolean;
@@ -37,6 +43,7 @@ export class User {
         this.phone = phone;
         this.isEnabled = true;
         this.failedLogins = 0;
+        this.items = [];
     }
 }
 

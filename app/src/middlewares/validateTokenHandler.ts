@@ -25,8 +25,11 @@ const validateToken = asyncHandler(async (req : IJwtPayload, res: Response, next
     token = authHeader.split(" ")[1];  
     console.log('isExpired is:', isJwtTokenExpired(token));
     if(isJwtTokenExpired(token)){
-      res.status(401);
-      throw new Error("token has expired");
+      // res.status(401);
+      // throw new Error("token has expired");
+      console.error("token has expired")
+      res.status(401).json("token has expired");
+
     }
 
     const decoded =  jwt.verify(token, process.env.JSON_WEB_TOKEN_SECRET as jwt.Secret)

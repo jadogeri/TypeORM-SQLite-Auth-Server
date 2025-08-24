@@ -1,0 +1,71 @@
+import { Auth } from "../entities/Auth";
+//import { IAuth } from "../interfaces/IAuth";
+import { AppDataSource } from "../data-source";
+import { IAuth } from "../interfaces/IAuth";
+import { User } from "../entities/User";
+import { Item } from "../entities/Item";
+
+
+const itemRepository = AppDataSource.getRepository(Item);
+
+
+import { IJwtPayload } from "../interfaces/IJWTPayload";
+import { IItem } from "../interfaces/IItem";
+
+  async function getAll(req : IJwtPayload) {
+    const items : Item[] | null = await itemRepository.find({ where: { user: { id: req.user.id }},
+});
+    return items;
+  }
+
+  async function getById(itemId : number) {
+    const item : Item | null = await itemRepository.findOne({
+    where: { id: itemId },
+});
+    return item;
+}
+
+  async function getByUserId(itemId : number, user: User) {
+    const item : Item | null = await itemRepository.findOne({
+    where: { id: itemId, user: { id: user.id } },
+});
+    return item;
+}
+
+
+async function create(item : IItem) {
+  const createdItem : Item | null = await itemRepository.save(item);
+  console.log("created item\n", JSON.stringify(createdItem, null, 4))
+
+  return  createdItem;
+}
+
+  // Update a specific user by ID
+//   await userRepository.update(
+//     { id: 1 },
+//     { name: "New Name", email: "new.email@example.com" }
+//   );
+// }
+async function update(itemId : number,payload : IItem) {
+    return itemRepository.update(
+      {id : itemId}, // Filter
+      {...payload}, // Update
+  );
+}
+                          /*
+
+//{_id: "12"}, {$set: {protocol: "http"}}, {upsert: true}
+async function remove(id : mongoose.Types.ObjectId) {
+  return Contact.findOneAndDelete({ _id : id });
+}
+*/
+async function removeAll(req : IJwtPayload) {
+  return itemRepository.delete({ user: { id: req.user.id } });
+}
+
+async function deleteByUserId(itemId: number, req : IJwtPayload) {
+  return itemRepository.delete({ id: itemId, user: { id: req.user.id } });
+}
+
+export { getById, getByUserId, getAll, create, removeAll, deleteByUserId, update };
+//export { getById, getByToken, getByEmail, create, update, remove, removeAll, getAll };

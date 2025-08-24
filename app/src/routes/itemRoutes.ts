@@ -2,19 +2,20 @@ import express from "express";
 
 import {addItem, getItem, getItems, deleteItem, deleteItems, updateItem} from "../controllers/itemController/index";
 
+const validateToken = require("../middlewares/validateTokenHandler");
+
 const router = express.Router();
 
-router.post("/", addItem);
+router.post("/", validateToken, addItem);
 
-router.put("/", updateItem);
+router.put("/:id", validateToken, updateItem);
 
-router.get("/:id", getItem);
+router.get("/:id", validateToken, getItem);
 
-router.get("/", getItems);
+router.get("/", validateToken, getItems);
 
-router.delete("/:id", deleteItem);
+router.delete("/:id", validateToken, deleteItem);
 
-router.delete("/", deleteItems);
-
+router.delete("/", validateToken, deleteItems);
 
 module.exports = router;

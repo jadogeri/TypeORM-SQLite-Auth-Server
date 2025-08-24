@@ -4,7 +4,7 @@ import { AppDataSource } from "../data-source";
 import { IAuth } from "../interfaces/IAuth";
 import { User } from "../entities/User";
 
-    const authRepository = AppDataSource.getRepository(Auth);
+const authRepository = AppDataSource.getRepository(Auth);
 
 
 /**

@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column,OneToOne, JoinColumn,CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, JoinColumn,CreateDateColumn, UpdateDateColumn, ManyToOne } from "typeorm";
 import { User } from "./User";
 
 @Entity()
@@ -8,9 +8,11 @@ export class Item {
 
     @Column()
     name: string;
-
-    @OneToOne(()=> User)
-    @JoinColumn() 
+    
+    //@JoinColumn({ name: 'userId' }) // Customize foreign key column name
+    @ManyToOne(() => User, (user) => user.items)
+    // @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
+    @JoinColumn()
     user: User;
 
     @CreateDateColumn()
@@ -27,3 +29,5 @@ export class Item {
     }
 
 }
+
+

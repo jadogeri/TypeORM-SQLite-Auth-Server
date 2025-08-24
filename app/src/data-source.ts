@@ -13,4 +13,7 @@ export const AppDataSource = new DataSource({
     entities: [Auth, Item, User], // List your entities here
     migrations: [],
     subscribers: [],    
+    entitySkipConstructor:true,
+    
+    
 });
