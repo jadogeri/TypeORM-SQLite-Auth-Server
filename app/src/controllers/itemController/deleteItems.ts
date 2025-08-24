@@ -1,7 +1,7 @@
 /**
  * @author Joseph Adogeri
  * @version 1.0
- * @since 11-AUG-2025
+ * @since 24-AUG-2025
  * @description function to delete all items by user in database
  */
 
@@ -14,8 +14,8 @@ import exceptionHandler from '../../utils/exceptionHandler';
 import { errorBroadcaster } from '../../utils/errorBroadcaster';
 
 /**
-*@desc delete an item
-*@route DELETE /api/items/delete
+*@desc delete all item
+*@route DELETE /api/items/
 *@access private
 */
 
