@@ -42,3 +42,6 @@ database.sqlite
 sqlitedb.sqlite
 
 Dockerfile
+
+#tests
+coverage
