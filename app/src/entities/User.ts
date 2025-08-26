@@ -26,7 +26,7 @@ export class User {
     phone: string;
 
     
-    @OneToMany(() => Item, (item) => item.user, { onDelete: 'CASCADE',cascade: ["update","remove"] }) // 'post.user' is the inverse side in the Post entity
+    @OneToMany(() => Item, (item) => item.user, { onDelete: 'CASCADE',cascade: ["update","remove"] }) 
     @JoinColumn()
     items: Item[];
 
