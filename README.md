@@ -1,15 +1,15 @@
 # **System Design Document (SDD)**
 
-## **Contact Management App**
+## **TypeORM SQLite Auth Server**
 
 **Version:** 1.1
-**Date:** March 22, 2025
+**Date:** August 25, 2025
 
 ---
 
 ## Description
 
-This is a template for Backend Application (Express + Node + Mongoose) which stores user information and contacts.
+This is a template for Backend Application (Express + Node + TypeORM + SQLite) which stores user information and items.
 
 ## Authors
 
@@ -90,7 +90,7 @@ This is a template for Backend Application (Express + Node + Mongoose) which sto
 
 ### **1.1 Purpose**
 
-This document outlines the system architecture, components, and design considerations for Contact Management App. The goal is to provide a template for backend developers to handle CRUD operations and authentication flow.
+This document outlines the system architecture, components, and design considerations for TypeORM SQLite Auth Server. The goal is to provide a template for backend developers to handle CRUD operations and authentication flow.
 
 ### **1.2 Scope**
 
@@ -125,10 +125,10 @@ The system follows a **three-tier architecture**:
 
 ### **3.2 Technology Stack**
 
-- **Programming Languages**: Typescript, NOSQL, YAML
+- **Programming Languages**: Typescript
 - **IDE**: Visual Studio Code (VSCode)
 - **Backend Frameworks**: Node and Express
-- **Database**: MongoDB
+- **Database**: SQLite
 - **Test**: Jest, MockingGoose, Mongo Memory Server and Supertest
 - **Plugins**: Early AI
 - **Container**: Docker
@@ -152,7 +152,7 @@ The system follows a **three-tier architecture**:
 | ------- | ---------------------------------------------------- |
 | USER    | User account information used to authenticate users. |
 | AUTH    | Saves authentication information of Users.           |
-| CONTACT | Contact information saved by User                    |
+| ITEM | Item saved by User                    |
 
 ---
 
@@ -161,7 +161,6 @@ The system follows a **three-tier architecture**:
 * [Download and install NodeJS](https://nodejs.org/en/download)
 * [Download and install Docker - Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
 * [Download and install Docker - Mac](https://docs.docker.com/desktop/setup/install/mac-install/)
-* [Create MongoDB account and connection string](https://www.mongodb.com/docs/drivers/node/current/quick-start/)
 * [Create Google account](https://google.com/)
 * [Generate Google account App Password](https://support.google.com/mail/thread/205453566/how-to-generate-an-app-password?hl=en)
 * [Twilio Account - API for SMS (Optional)](https://www.twilio.com/en-us/messaging/programmable-messaging-api)
@@ -171,7 +170,7 @@ The system follows a **three-tier architecture**:
 
 ## **6. Usage**
 
-**Prerequisites** :installation of NodeJS and MongoDB atlas account
+**Prerequisites** :installation of NodeJS
 
 ### **6.1 Run Application**
 
@@ -180,20 +179,20 @@ The system follows a **three-tier architecture**:
 2 Type command git clone https://github.com/jadogeri/Contact_Management_App.git then press enter.
 
 ```bash
-  git clone https://github.com/jadogeri/Contact_Management_App.git
+  git clone https://github.com/jadogeri/TypeORM-SQLite-Auth-Server.git
 ```
 
-3 Enter command cd Contact_Management_App then press enter.
+3 Enter command cd TypeORM-SQLite-Auth-Server/app then press enter.
 
 ```bash
-  cd Contact_Management_App
+  cd TypeORM-SQLite-Auth-Server/app
 ```
 
 #### **6.1.1 Run Locally**
 
 1 Add .env file in project root directory and copy contents in .env.sample.
 
-2 Fill out connection_string with mongoDB atlas MONGODB_URI and create a secret phrase for JSON_WEB_TOKEN_SECRET.
+2 Create a secret phrase for JSON_WEB_TOKEN_SECRET.
 
 ![env](assets/images/env.png)
 
@@ -203,7 +202,7 @@ The system follows a **three-tier architecture**:
   npm install
 ```
 
-4 Type npm run dev to run server
+4 Type npm start to run server
 
 ```bash
   npm run dev
