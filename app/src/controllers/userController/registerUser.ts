@@ -1,8 +1,8 @@
 /**
  * @author Joseph Adogeri
  * @version 1.0
- * @since 11-AUG-2025
- *
+ * @since 24-AUG-2025
+ * @description function to add user to database;
  */
 
 import { errorBroadcaster } from '../../utils/errorBroadcaster';
@@ -23,11 +23,9 @@ import exceptionHandler from '../../utils/exceptionHandler';
 */
 
 export const registerUser = asyncHandler(async (req : Request, res: Response) => {
-  console.log( "calling register request")
 
   const { username, email, password, phone} : IUser  = req.body as IUser;
-  console.log("data from request == ",username, email, password, phone)
-  
+ 
   if (!username || !email || !password) {
     errorBroadcaster(res,400,"All fields are mandatory!")
   }
@@ -35,12 +33,10 @@ export const registerUser = asyncHandler(async (req : Request, res: Response) =>
 
   console.log(validator.getCredential)
   if(!validator.validateEmail()){
-    errorBroadcaster(res,553,"not a valid email")
-
+    errorBroadcaster(res,553,"not a valid email");
   }
   if(!validator.validateUsername()){
-    errorBroadcaster(res,400,"not a valid username")
-
+    errorBroadcaster(res,400,"not a valid username");
   }
   if(!validator.validatePassword()){
     errorBroadcaster(res,400,"not a valid password")
@@ -48,18 +44,16 @@ export const registerUser = asyncHandler(async (req : Request, res: Response) =>
 //if phone number is provided check if string is a valid phone number
   if(phone){
     if(!isValidatePhoneNumber(phone )){
-        errorBroadcaster(res,400,"not a valid phone number")
+      errorBroadcaster(res,400,"not a valid phone number")
     }  
   }
   //Hash password
   const hashedPassword : string = await hash(password as string, parseInt(process.env.BCRYPT_SALT_ROUNDS as string));
   try{
     const createdUser = await userService.create({username, email, password : hashedPassword, phone})
-    console.log("line 48",JSON.stringify(createdUser, null,2))
     res.status(200).json(createdUser);
 
   }catch(error : unknown){
-    exceptionHandler(error, errorBroadcaster, res);
-  
+    exceptionHandler(error, errorBroadcaster, res);  
   }
 });
