@@ -1,3 +1,10 @@
+/**
+ * @author Joseph Adogeri
+ * @version 1.0
+ * @since 24-AUG-2025
+ * @description class representing Item entity;
+ */
+
 import { Entity, PrimaryGeneratedColumn, Column, JoinColumn,CreateDateColumn, UpdateDateColumn, ManyToOne } from "typeorm";
 import { User } from "./User";
 
