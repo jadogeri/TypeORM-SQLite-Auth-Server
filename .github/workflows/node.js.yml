@@ -13,6 +13,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
     strategy:
       matrix:
         node-version: [20.x, 22.x]
@@ -27,13 +30,13 @@ jobs:
         cache: 'npm'
     - name: Install backend dependencies
     - run: npm install
-      working-directory: ./app
+      # working-directory: ./app
 
     - name: Build project 
     - run: npm run build --if-present
-      working-directory: ./app
+      # working-directory: ./app
 
     - name: Run Tests
     - run: npm run test
-      working-directory: ./app
+      # working-directory: ./app
 
