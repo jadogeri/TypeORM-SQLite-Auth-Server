@@ -3,10 +3,7 @@
 
 
 import { Response } from "express";
-import { errorBroadcaster } from '../../../src/utils/errorBroadcaster';
-
-
-
+import { errorBroadcaster } from "../../../utils/errorBroadcaster";
 
 describe('errorBroadcaster() errorBroadcaster method', () => {
   let mockResponse: Partial<Response>;
@@ -24,7 +21,7 @@ describe('errorBroadcaster() errorBroadcaster method', () => {
       const message = 'Bad Request';
 
       // Act & Assert
-      expect(() => errorBroadcaster(mockResponse as Response, code, message)).toThrowError(message);
+      expect(() => errorBroadcaster(mockResponse as Response, code, message)).toThrow(message);
       expect(mockResponse.status).toHaveBeenCalledWith(code);
     });
 
@@ -34,7 +31,7 @@ describe('errorBroadcaster() errorBroadcaster method', () => {
       const message = 'Success';
 
       // Act & Assert
-      expect(() => errorBroadcaster(mockResponse as Response, code, message)).toThrowError(message);
+      expect(() => errorBroadcaster(mockResponse as Response, code, message)).toThrow(message);
       expect(mockResponse.status).toHaveBeenCalledWith(code);
     });
   });
@@ -46,7 +43,7 @@ describe('errorBroadcaster() errorBroadcaster method', () => {
       const message = 'Negative Status Code';
 
       // Act & Assert
-      expect(() => errorBroadcaster(mockResponse as Response, code, message)).toThrowError(message);
+      expect(() => errorBroadcaster(mockResponse as Response, code, message)).toThrow(message);
       expect(mockResponse.status).toHaveBeenCalledWith(code);
     });
 
@@ -56,7 +53,7 @@ describe('errorBroadcaster() errorBroadcaster method', () => {
       const message = 'Large Status Code';
 
       // Act & Assert
-      expect(() => errorBroadcaster(mockResponse as Response, code, message)).toThrowError(message);
+      expect(() => errorBroadcaster(mockResponse as Response, code, message)).toThrow(message);
       expect(mockResponse.status).toHaveBeenCalledWith(code);
     });
 
@@ -66,7 +63,7 @@ describe('errorBroadcaster() errorBroadcaster method', () => {
       const message = '';
 
       // Act & Assert
-      expect(() => errorBroadcaster(mockResponse as Response, code, message)).toThrowError(message);
+      expect(() => errorBroadcaster(mockResponse as Response, code, message)).toThrow(message);
       expect(mockResponse.status).toHaveBeenCalledWith(code);
     });
 
@@ -76,7 +73,7 @@ describe('errorBroadcaster() errorBroadcaster method', () => {
       const message = undefined as unknown as string;
 
       // Act & Assert
-      expect(() => errorBroadcaster(mockResponse as Response, code, message)).toThrowError('undefined');
+      expect(() => errorBroadcaster(mockResponse as Response, code, message)).toThrow('undefined');
       expect(mockResponse.status).toHaveBeenCalledWith(code);
     });
   });
