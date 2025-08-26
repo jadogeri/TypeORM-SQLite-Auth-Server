@@ -28,6 +28,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+        cache-dependency-path: './app/package-lock.json' # Adjust path as needed
     - run: npm install
       # working-directory: ./app
 
