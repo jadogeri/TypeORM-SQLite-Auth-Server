@@ -1,3 +1,10 @@
+/**
+ * @author Joseph Adogeri
+ * @version 1.0
+ * @since 24-AUG-2025
+ * @description class representing Auth entity;
+ */
+
 import { Entity, PrimaryGeneratedColumn, OneToOne, Column, JoinColumn, CreateDateColumn, UpdateDateColumn  } from "typeorm";
 import { User } from "./User";
 
