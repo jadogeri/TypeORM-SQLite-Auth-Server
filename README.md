@@ -176,7 +176,7 @@ The system follows a **three-tier architecture**:
 
 1 Open command prompt or terminal.
 
-2 Type command git clone https://github.com/jadogeri/Contact_Management_App.git then press enter.
+2 Type command git clone https://github.com/jadogeri/TypeORM-SQLite-Auth-Server.git then press enter.
 
 ```bash
   git clone https://github.com/jadogeri/TypeORM-SQLite-Auth-Server.git
@@ -208,13 +208,13 @@ The system follows a **three-tier architecture**:
   npm run dev
 ```
 
-![env](assets/images/localoutput.png)
+![env](assets/images/npmstart.png)
 
 #### **6.1.2 Run Docker container**
 
 1 Add Dockerfile file in project root directory and copy contents in .Dockerfile.sample.
 
-2 Fill out connection string with mongoDB atlas MONGODB_URI and create a secret phrase for JSON_WEB_TOKEN_SECRET.
+2 Create a secret phrase for JSON_WEB_TOKEN_SECRET.
 
 ![docker](assets/images/docker.png)
 
@@ -226,13 +226,13 @@ The system follows a **three-tier architecture**:
 
 ![dockerbuild](assets/images/dockerimage.png)
 
-3 Type docker run --name server-container -d -it -p 6000:6000 server-image to create and start container immediately.
+3 Type docker run --name server-container -d -it -p 4000:4000 server-image to create and start container immediately.
 
 ```bash
-  docker run --name server-container -d -it -p 6000:6000 server-image
+  docker run --name server-container -d -it -p 4000:4000 server-image
 ```
 
-![dockerbuild](assets/images/dockerrun.png)
+![dockerbuild](assets/images/dockercontainer.png)
 
 4 Type docker stop server-container to stop container.
 
