@@ -4,7 +4,10 @@
   "description": "Node + Express app utilizing TypeORM for authorization and authentication of backend apps",
   "main": "index.ts",
   "scripts": {
-    "test": "jest --coverage --testPathPatterns=tests/",
+    "test": "jest --coverage --testPathPatterns=tests/ --runInBand --detectOpenHandles --colors",
+    "unit": "jest --testPathPatterns=unit.test.ts$ --colors",
+    "integration": "jest --detectOpenHandles --testPathPatterns=integration.test.ts$ --colors --watchAll --no-cache --runInBand --verbose",
+    "e2e": "jest --testPathPatterns=e2e.test.ts$",
     "start": "nodemon index.ts"
   },
   "repository": {
