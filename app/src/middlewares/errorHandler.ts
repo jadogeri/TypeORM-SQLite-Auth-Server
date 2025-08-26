@@ -8,6 +8,18 @@
 import { constants } from "../constants";
 import { Response, Request,NextFunction } from "express";
 
+/**
+ * Middleware function to handle errors and send appropriate JSON responses 
+ * based on the HTTP status code. It logs the status code and formats the 
+ * error response with a title, message, and stack trace.
+ * 
+ * @param {Error} err - The error object containing error details.
+ * @param {Request} req - The HTTP request object.
+ * @param {Response} res - The HTTP response object.
+ * @param {NextFunction} next - The next middleware function in the stack.
+ * @returns {void}
+ * @throws {void} - Does not throw exceptions, but logs errors to the console.
+ */
 export const errorHandler = (err : Error, req : Request, res : Response, next : NextFunction) => {
   const statusCode = res.statusCode ? res.statusCode : 500;
   console.log("status code is ", statusCode)
