@@ -36,7 +36,6 @@ async function getByEmail(email : string) {
  * @throws MongooseError if the update operation fails.
  */
 async function update(user : User) {
-
   return await userRepository.save(user)
 }
 
@@ -50,25 +49,12 @@ async function remove(id : number) {
   return await userRepository.delete({id: id})
 }
 
-
-/**
- *  // READ (Find a single user by ID)
-    console.log("Loading user by ID...");
-    const userById = await userRepository.findOneBy({ id: newUser.id });
-    console.log("User by ID:", userById);
- */
-  async function getById(userId : number) {
-    const user : User | null = await userRepository.findOne({
+async function getById(userId : number) {     
+  const user : User | null = await userRepository.findOne({
     where: { id: userId },
-});
-    return user;
+  });
+  return user;
 }
 
 export {create, getByEmail, getById, update, remove}
 
-/**
- *  // READ (Find a single user by ID)
-    console.log("Loading user by ID...");
-    const userById = await userRepository.findOneBy({ id: newUser.id });
-    console.log("User by ID:", userById);
- */

@@ -1,5 +1,4 @@
 import { Auth } from "../entities/Auth";
-//import { IAuth } from "../interfaces/IAuth";
 import { AppDataSource } from "../data-source";
 import { IAuth } from "../interfaces/IAuth";
 import { User } from "../entities/User";
@@ -8,17 +7,18 @@ const authRepository = AppDataSource.getRepository(Auth);
 
 
 /**
-   * Retrieves an authentication record by its unique identifier.
-   * @param id - The unique identifier of the authentication record (ObjectId).
-   * @returns A promise that resolves to the found authentication record or null if not found.
-   * @throws Throws an error if the database query fails.
-   */
+ * Retrieves an authentication record by its unique identifier.
+ * @param id - The unique identifier of the authentication record (ObjectId).
+ * @returns A promise that resolves to the found authentication record or null if not found.
+ * @throws Throws an error if the database query fails.
+ */
 async function getByUserId(userId : number) {
-    const auth : Auth | null = await authRepository.findOne({
-    where: { user: { id: userId }},
-});
-    return auth;
-  }
+  const auth : Auth | null = await authRepository.findOne({
+  where: { user: { id: userId }},
+  });
+  return auth;
+}
+
 /**
  * Retrieves an authentication record by the provided token.
  * @param token - The token string used to find the corresponding Auth record.
@@ -26,9 +26,9 @@ async function getByUserId(userId : number) {
  * @throws Throws an error if the database query fails.
  */
 async function getByToken(token : string) {
-    const auth : Auth | null = await authRepository.findOneBy({  });
+  const auth : Auth | null = await authRepository.findOneBy({ token });
 
-    return auth
+  return auth
 }
 
 /**
@@ -39,7 +39,7 @@ async function getByToken(token : string) {
  */
 async function create(auth : IAuth) {
 
-    return await authRepository.save(auth);
+  return await authRepository.save(auth);
 }
 
 /**
@@ -53,18 +53,11 @@ async function create(auth : IAuth) {
 async function update(auth : IAuth ) {
   const createdAuth = await authRepository.findOne({
     where: { user: { id: auth.user?.id }}}) as Auth
-    createdAuth.token = auth.token as string
-    //return await authRepository.update({token:auth.token},{ user: { id: auth?.user?.id }})
-    return await authRepository.save(createdAuth);
+  createdAuth.token = auth.token as string
+  //return await authRepository.update({token:auth.token},{ user: { id: auth?.user?.id }})
+  return await authRepository.save(createdAuth);
 
 }
-
-
-
-//     return await authRepository.update({
-//     token: auth.token,where: { user: { id: id }},
-// });
-// }
 
 /**
  * Deletes a user from the database by their unique identifier.
