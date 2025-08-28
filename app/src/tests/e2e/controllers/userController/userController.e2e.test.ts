@@ -8,12 +8,13 @@
 // import { resetUserTest } from "./resetUserTest";
 // import {deactivateUserTest } from "./deactivateUserTest";
 import { registerUserTest } from "./registerUserTest";
+import { TestDatabase } from "../../../TestDatabase";
 
 describe('testing user and contact api requests', () => {
 
     
   beforeAll(async () => {
-    
+    let testDB = new TestDatabase();
     //await testDB.start()
   });
 

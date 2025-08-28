@@ -32,7 +32,7 @@ export const registerUserTest = () => {
 
         
       }
-      const res = await request(app).post('/users/register').send(mockUser)    
+      const res = await request(BASE_URL).post('/users/register').send(mockUser)    
 
       console.log("data retrieved from test == ",JSON.stringify(res, null, 2
 
