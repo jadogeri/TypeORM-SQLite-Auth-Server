@@ -1,5 +1,4 @@
-import { IUser } from "../../src/interfaces/IUser"
-
+import { IUser } from "../../interfaces/IUser"
 const users: IUser[] = [
     {
         "username" : "Bruce Wayne",
