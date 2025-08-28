@@ -11,4 +11,13 @@ export class TestDatabase{
         return this.dataSource;
     }
 
+    async start(){
+        return this.dataSource.initialize();
+    }
+
+    async stop(){
+        await this.dataSource.dropDatabase();
+        await this.dataSource.destroy();
+    }
+
 }

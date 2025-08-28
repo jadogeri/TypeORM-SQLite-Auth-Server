@@ -53,9 +53,12 @@ app.use(cors(corsOptions))
                 app.use(cors(corsOptions)) 
                 res.send({message:"Welcome to Server API"});
                 });
-                    app.listen(port, () => {
+                let server = app.listen(port, () => {
                     console.log(`Server running on port ${port}`);
                 });
+
+                
+                
             })
             .catch((error: unknown) => {console.log(error)});
             

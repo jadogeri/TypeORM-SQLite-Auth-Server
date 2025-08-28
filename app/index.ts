@@ -9,12 +9,11 @@ import { errorHandler } from "./src/middlewares/errorHandler";
 
 dotenv.config();
 
-let app : any = null;
 
 AppDataSource.initialize()
     .then(async () => {
         const port = process.env.PORT || 3500
-        app = express();
+        const app = express();
         app.use(express.json());
 
 
@@ -38,5 +37,5 @@ AppDataSource.initialize()
     })
     .catch((error) => console.log(error));
 
-
-    export { app } 
+    
+    
