@@ -1,8 +1,7 @@
 import {  test } from '@jest/globals';
 const request = require('supertest');
-import { fileReader } from "../../fileReader";
-const {BASE_URL}  = require("../../constants")
-
+import { fileReader } from '../../../fileReader';
+import { BASE_URL } from '../../../setupTests';
 
 export const registerUserTest = () => {
 
@@ -18,7 +17,7 @@ export const registerUserTest = () => {
 
       let mock = localStorage.getItem("user");
       let mockObj = JSON.parse(mock as string)
-      const res = await request(BASE_URL).post('/api/users/register').send(mockObj)    
+      const res = await request(BASE_URL).post('/users/register').send(mockObj)    
 
       console.log("data retrieved from test == ",JSON.stringify(res.body))
       if(res.statusCode ===201){
