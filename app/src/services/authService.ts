@@ -27,18 +27,30 @@ async function getByUserId(userId : number) {
  * @throws Throws an error if the database query fails.
  */
 async function getByToken(token : string) {
-  const auth : Auth | null = await authRepository.findOneBy({ token });
+  const auth : Auth | null = await authRepository.findOne({ where: { token: token } });
 
   return auth
 }
 
 
+/**
+ * Saves the provided authentication object to the repository.
+ * @param auth - The authentication object to be saved.
+ * @returns A promise that resolves to the saved authentication object.
+ * @throws Throws an error if the save operation fails.
+ */
 async function create(auth : IAuth) {
 
   return await authRepository.save(auth);
 }
 
 
+/**
+ * Updates the authentication token for a specified user in the database.
+ * @param auth - An object containing the user's authentication details, including the user ID and new token.
+ * @returns A promise that resolves to the updated Auth object.
+ * @throws Throws an error if the user is not found or if the save operation fails.
+ */
 async function update(auth : IAuth ) {
   const createdAuth = await authRepository.findOne({
     where: { user: { id: auth.user?.id }}}) as Auth

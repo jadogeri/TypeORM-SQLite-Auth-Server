@@ -15,5 +15,4 @@ export const AppDataSource = new DataSource({
     subscribers: [],    
     entitySkipConstructor:true,
     
-    
 });
