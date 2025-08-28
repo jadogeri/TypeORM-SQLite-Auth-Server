@@ -4,7 +4,7 @@ import * as dotenv from "dotenv"
 import bodyParser from "body-parser";
 import cors from "cors"
 import { errorHandler } from '../middlewares/errorHandler';
-import { AppDataSource } from './server';
+import { AppDataSource } from './TestDataSource';
 import { corsOptions } from '../configs/cors';
 
 
