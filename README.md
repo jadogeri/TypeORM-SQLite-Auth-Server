@@ -260,12 +260,28 @@ The system follows a **three-tier architecture**:
 
 ## **8. Tests**
 
-1. run test command below.
+1. type npm run test command to run all tests.
 
 ```bash
   npm run test
 ```
+2. type npm run unit command to run all unit tests.
 
+```bash
+  npm run unit
+```
+
+1. type npm run integration command to run all integration tests.
+
+```bash
+  npm run integration
+```
+
+1. type npm run e2e command to run all end to end tests.
+
+```bash
+  npm run e2e
+```
 ![tests](assets/images/tests.png)
 
 ---

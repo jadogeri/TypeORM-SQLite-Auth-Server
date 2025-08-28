@@ -5,8 +5,11 @@ import { IUserAuthorized } from "./src/interfaces/IUserAuthorized";
 import { IUserDeactivated } from "./src/interfaces/IUserDeactivated";
 import { IUserForgot } from "./src/interfaces/IUserForgot";
 import { IItem } from "./src/interfaces/IItem";
+import { LocalStorage } from "node-localstorage";
 
 declare global {
+     var localStorage: LocalStorage;
+
     namespace Express {
       interface Request {
         user: {
@@ -38,3 +41,6 @@ declare global {
 
   export {}
 
+    declare global {
+    var localStorage: LocalStorage;
+  }

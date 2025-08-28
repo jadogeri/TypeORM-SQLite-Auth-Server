@@ -25,6 +25,8 @@ import exceptionHandler from '../../utils/exceptionHandler';
 export const registerUser = asyncHandler(async (req : Request, res: Response) => {
 
   const { username, email, password, phone} : IUser  = req.body as IUser;
+
+  
  
   if (!username || !email || !password) {
     errorBroadcaster(res,400,"All fields are mandatory!")
@@ -50,8 +52,13 @@ export const registerUser = asyncHandler(async (req : Request, res: Response) =>
   //Hash password
   const hashedPassword : string = await hash(password as string, parseInt(process.env.BCRYPT_SALT_ROUNDS as string));
   try{
+    console.log("1..........................................................1")
     const createdUser = await userService.create({username, email, password : hashedPassword, phone})
+        console.log("2..........................................................2")
+
     res.status(200).json(createdUser);
+        console.log("3..........................................................3")
+
 
   }catch(error : unknown){
     exceptionHandler(error, errorBroadcaster, res);  

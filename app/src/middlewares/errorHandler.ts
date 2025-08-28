@@ -22,7 +22,6 @@ import { Response, Request,NextFunction } from "express";
  */
 export const errorHandler = (err : Error, req : Request, res : Response, next : NextFunction) => {
   const statusCode = res.statusCode ? res.statusCode : 500;
-  console.log("status code is ", statusCode)
   switch (statusCode) {
     case constants.VALIDATION_ERROR:
       res.json({

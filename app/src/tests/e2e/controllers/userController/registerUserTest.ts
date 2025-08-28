@@ -1,7 +1,10 @@
 import {  test } from '@jest/globals';
-const request = require('supertest');
+import request from "supertest"
 import { fileReader } from '../../../fileReader';
 import { BASE_URL } from '../../../setupTests';
+import { IUser } from '../../../../interfaces/IUser';
+
+
 
 export const registerUserTest = () => {
 
@@ -16,10 +19,24 @@ export const registerUserTest = () => {
       localStorage.setItem("user",initUser);      
 
       let mock = localStorage.getItem("user");
+      console.log("mock", JSON.stringify(mock, null,4))
       let mockObj = JSON.parse(mock as string)
-      const res = await request(BASE_URL).post('/users/register').send(mockObj)    
+      console.log("mock obj stringify", JSON.stringify(mockObj, null,4))
+            console.log("mock obj regular", mock)
 
-      console.log("data retrieved from test == ",JSON.stringify(res.body))
+      let mockUser : IUser = {
+        username: mockObj?.username as string,
+        email: mockObj.email as string,
+        password: mockObj?.password as string,
+        phone: mockObj.phone as string,
+
+        
+      }
+      const res = await request(BASE_URL).post('/users/register').send(mockUser)    
+
+      console.log("data retrieved from test == ",JSON.stringify(res, null, 2
+
+      ))
       if(res.statusCode ===201){
         let updatedCreds = {...mockObj,... res.body,password : mockObj.password}   
         localStorage.setItem("user",JSON.stringify(updatedCreds, null, 2))

@@ -1,89 +1,18 @@
-    import { createConnection, Connection } from 'typeorm';
-    import { User } from '../entities/User'; // Your entity
-import { Auth } from '../entities/Auth';
-import { Item } from '../entities/Item';
-
-    export const createTestConnection = async (): Promise<Connection> => {
-      const connection = await createConnection({
-        type: 'sqlite',
-        database: ':memory:', // In-memory database
-        entities: [User, Auth, Item], // Register your entities here
-        synchronize: true, // Automatically create tables from entities
-        logging: false,
-        entitySkipConstructor:true,
-
-      });
-      return connection;
-    };
-
-    export const closeTestConnection = async (connection: Connection): Promise<void> => {
-      await connection.close();
-    };
+import "reflect-metadata";
+import { DataSource } from "typeorm";
+import { Auth } from "../entities/Auth";
+import { Item } from "../entities/Item";
+import { User } from "../entities/User";
 
 
-    /**
-     * 
-    import mongoose from 'mongoose';
-import { MongoMemoryServer } from 'mongodb-memory-server';
-import {log } from "console"
-const mongod = MongoMemoryServer.create();
-export const connect = async () => {
-   const uri = (await mongod).getUri();
- 
-   let connection = mongoose.connect(uri, {
-       dbName: 'testDB'
-       // add more config if you need
-   });
-
-   //console.log("total connections ===",mongoose.connections.length)
-   
-
-    return connection;
-}
-export const closeDatabase = async () => {
-
-   //console.log("total connections in close ===",mongoose.connections.length)
-   let i = 0
-
-   for (const connection of mongoose.connections) {
-      //console.log("loop " , i)
-      i++;
-
-      try {
-        await connection.dropDatabase();
-        await connection.close();
-        await mongoose.disconnect()
-        await (await mongod).stop();
-
-      } catch (error) {
-        //console.error(`Error closing connection to ${connection.name}:`, error);
-      }
-    }
-  
-
-   // await mongoose.connection.dropDatabase();
-   // await mongoose.connection.close();
-
-}
-export const clearDatabase = async () => {
-   try{
-   const collections = mongoose.connection.collections;
-   //console.log("total collections ===",collections)
-
-   for (const key in collections) {
-      //log("key===============")
-      //log(key)
-      const collection = collections[key];
-      await collection.deleteMany({});
-   }
-}catch(e){
-   log(e);
-   
-}
-}
-
-const db = { connect, closeDatabase, clearDatabase}
-
-export { db }
-
-     */
+export const AppDataSource = new DataSource({
+    type: "sqlite",
+    database: process.env.DATABASE || "sqlitedb.sqlite", // Name of your SQLite database file
+    synchronize: true, // Automatically create/update tables based on entities (for development)
+    logging: false, // Set to true for detailed SQL logging
+    entities: [Auth, Item, User], // List your entities here
+    migrations: [],
+    subscribers: [],    
+    entitySkipConstructor:true,
+    
+});

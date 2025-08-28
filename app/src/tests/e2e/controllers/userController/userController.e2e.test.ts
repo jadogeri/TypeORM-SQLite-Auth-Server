@@ -14,19 +14,20 @@ describe('testing user and contact api requests', () => {
     
   beforeAll(async () => {
     
-    //await db.connect()
+    //await testDB.start()
   });
 
-  // beforeEach(async () => {
+  beforeEach(async () => {
     
-  //   await db.connect()
-  // });
-//   afterEach(async () => {
-//     await db.clearDatabase()
-//   });
+    //await createTestConnection()
+  });
+  afterEach(async () => {
+    //await db.clearDatabase()
+  });
   afterAll(async () => {
+    //await testDB.stop();
     // await db.clearDatabase()
-    // await db.closeDatabase()
+     //await closeTestConnection(connection as Connection)
   });
 
     //global.localStorage = new LocalStorage('./tests/storage');
