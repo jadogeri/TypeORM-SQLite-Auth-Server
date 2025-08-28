@@ -1,9 +1,6 @@
-import { AppDataSource } from "../data-source";
 import { User } from "../entities/User";
 import { Item } from "../entities/Item";
-
-
-const itemRepository = AppDataSource.getRepository(Item);
+import { itemRepository } from "../repositories/itemRepository";
 
 
 import { IJwtPayload } from "../interfaces/IJWTPayload";
