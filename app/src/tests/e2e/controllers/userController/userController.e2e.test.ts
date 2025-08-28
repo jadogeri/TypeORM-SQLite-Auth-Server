@@ -9,13 +9,19 @@
 // import {deactivateUserTest } from "./deactivateUserTest";
 import { registerUserTest } from "./registerUserTest";
 import { TestDatabase } from "../../../TestDatabase";
+import { TestDataSource } from "../../../TestDataSource";
+import { User } from "../../../../entities/User";
+import { Auth } from "../../../../entities/Auth";
+import { Item } from "../../../../entities/Item";
 
 describe('testing user and contact api requests', () => {
 
     
   beforeAll(async () => {
-    let testDB = new TestDatabase();
-    //await testDB.start()
+    const entities = [User, Auth, Item]
+    let testDB = new TestDatabase(TestDataSource(entities));
+    let emd = await testDB.getDataSource()
+    console.log(emd.entityMetadatas)
   });
 
   beforeEach(async () => {
