@@ -3,7 +3,7 @@ import request from "supertest"
 import { fileReader } from '../../../fileReader';
 import { BASE_URL } from '../../../setupTests';
 import { IUser } from '../../../../interfaces/IUser';
-
+import { app } from "../../../../../index"
 
 
 export const registerUserTest = () => {
@@ -32,7 +32,7 @@ export const registerUserTest = () => {
 
         
       }
-      const res = await request(BASE_URL).post('/users/register').send(mockUser)    
+      const res = await request(app).post('/users/register').send(mockUser)    
 
       console.log("data retrieved from test == ",JSON.stringify(res, null, 2
 
