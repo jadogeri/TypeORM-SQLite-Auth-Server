@@ -1,8 +1,7 @@
-import { AppDataSource } from "../data-source";
 import { User } from "../entities/User";
 import { IUser } from "../interfaces/IUser";
+import { userRepository } from "../repositories/userRepository";
 
-const userRepository = AppDataSource.getRepository(User);
 
 /**
  * Creates a new user in the database.
