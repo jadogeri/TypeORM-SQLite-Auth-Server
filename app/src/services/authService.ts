@@ -1,7 +1,7 @@
 import { Auth } from "../entities/Auth";
 import { IAuth } from "../interfaces/IAuth";
 import { User } from "../entities/User";
-import { authRepository } from "../repositories/authRepoitory";
+import { authRepository } from "../repositories/authRepository";
 
 
 /**
