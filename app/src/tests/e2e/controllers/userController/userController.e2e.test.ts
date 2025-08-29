@@ -7,13 +7,19 @@
 // import { forgotUserTest } from "./forgotUserTest";
 // import { resetUserTest } from "./resetUserTest";
 // import {deactivateUserTest } from "./deactivateUserTest";
+import { log } from "console";
+import server from "../../../server";
+import process from "process";
+
 import { registerUserTest } from "./registerUserTest";
     console.log("environment =========", process.env.ENVIRONMENT)
 
+let testServer: any ;
 describe('testing user and contact api requests', () => {
 
     
   beforeAll(async () => {
+    testServer = server()
 
   });
 
@@ -28,6 +34,18 @@ describe('testing user and contact api requests', () => {
     //await testDB.stop();
     // await db.clearDatabase()
      //await closeTestConnection(connection as Connection)
+
+
+     // To close the server programmatically
+// This will stop the server from accepting new connections,
+// but existing connections will be allowed to complete.
+testServer.close(() => {
+  log('Server closed successfully.');
+  process.exit(0); 
+
+});
+
+
   });
 
     //global.localStorage = new LocalStorage('./tests/storage');

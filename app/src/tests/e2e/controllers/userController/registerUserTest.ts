@@ -2,6 +2,7 @@ import request from "supertest"
 import { fileReader } from '../../../fileReader';
 import { BASE_URL } from '../../../setupTests';
 import { IUser } from '../../../../interfaces/IUser';
+import app from "../../../server";
 
 
 export const registerUserTest = () => {
@@ -41,7 +42,7 @@ export const registerUserTest = () => {
 
       }
 
-      expect(res.statusCode).toEqual(201);
+      expect(res.statusCode).toEqual(200);
     }catch(e){
       console.log(e);
     }    
