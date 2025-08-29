@@ -40,6 +40,10 @@ yarn-error.*
 # database
 database.sqlite
 sqlitedb.sqlite
+testDB.sqlite
+devDB.sqlite
+prodDB.sqlite
+
 
 Dockerfile
 

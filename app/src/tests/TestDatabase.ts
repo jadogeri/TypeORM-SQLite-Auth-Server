@@ -12,7 +12,7 @@ export class TestDatabase{
     }
 
     async start(){
-        return this.dataSource.initialize();
+        return await this.dataSource.initialize();
     }
 
     async stop(){

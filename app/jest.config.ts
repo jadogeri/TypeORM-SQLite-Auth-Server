@@ -1,16 +1,28 @@
-import { createDefaultPreset } from "ts-jest";
+// import { createDefaultPreset } from "ts-jest";
+
+// const tsJestTransformCfg = createDefaultPreset().transform;
+
+// /** @type {import("jest").Config} **/
+// export default {
+//   testEnvironment: "node",
+//   transform: {
+//     ...tsJestTransformCfg,
+//   },
+// };
+
+
+ import { createDefaultPreset } from "ts-jest";
 
 const tsJestTransformCfg = createDefaultPreset().transform;
 
 /** @type {import("jest").Config} **/
 export default {
-  preset:"ts-jest",
   testEnvironment: "node",
-  setupFiles: ['./src/tests/setupTests.ts'],
-  setupFilesAfterEnv: ["./src/tests/setupTests.ts"], // or "<rootDir>/jest.setup.ts"
   transform: {
-    ...tsJestTransformCfg,    
-  },  
+    ...tsJestTransformCfg,
+    "^.+\\.(js|jsx|ts|tsx)$": "babel-jest",
+  },
+  transformIgnorePatterns: ["/node_modules/(?!(@josephadogeridev/auth-credential-validator-ts)/)"],
 };
 
-
+       

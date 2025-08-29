@@ -6,6 +6,7 @@ import { IUserDeactivated } from "./src/interfaces/IUserDeactivated";
 import { IUserForgot } from "./src/interfaces/IUserForgot";
 import { IItem } from "./src/interfaces/IItem";
 import { LocalStorage } from "node-localstorage";
+import { ModeType } from "./src/types/ModeType";
 
 declare global {
      var localStorage: LocalStorage;
@@ -28,6 +29,7 @@ declare global {
         BCRYPT_SALT_ROUNDS : string;
         BASE_URL : string;
         NANOID_SIZE : string;
+        ENVIRONMENT: ModeType
         PORT: number;
         NODEMAILER_USERNAME : string;
         NODEMAILER_PASSWORD : string;

@@ -2,7 +2,6 @@
   "compilerOptions": {
     "target": "ES2022",
     "module": "CommonJS",
-    "types": ["jest", "node"],
     "outDir": "./dist",
     "typeRoots": [ "./env.d.ts","./node_modules/@types", "../node_modules/@types", "../../node_modules/@types","src/**/*.ts"],                                  /* Specify multiple folders that act like './node_modules/@types'. */
     "strict": true,
@@ -19,5 +18,4 @@
   "exclude": ["./node_modules/*","node_modules"],
 
 }
-
 

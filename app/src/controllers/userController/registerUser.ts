@@ -10,10 +10,10 @@ import { IUser } from '../../interfaces/IUser';
 import * as userService from "../../services/userService"
 const asyncHandler = require("express-async-handler");
 import { Response } from 'express';
-import Validator from '@josephadogeridev/auth-credential-validator-ts';
 import {hash} from "bcrypt";
 import { isValidatePhoneNumber } from '../../utils/isValidPhoneNumber';
 import exceptionHandler from '../../utils/exceptionHandler';
+import Validator from '@josephadogeridev/auth-credential-validator-ts';
 
 
 /**

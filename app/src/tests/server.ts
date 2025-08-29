@@ -2,18 +2,19 @@
 import express, { Response, Request } from "express";
 import * as dotenv from "dotenv"
 dotenv.config();
+// Assign a new environment variable
+process.env.ENVIRONMENT = "TEST";
 
 import bodyParser from "body-parser";
 import cors from "cors"
-import { corsOptions } from "./src/configs/cors"
-import { errorHandler } from "./src/middlewares/errorHandler";
-import { AppDataSource } from "./src/data-source";
+import { corsOptions } from "../configs/cors"
+import { errorHandler } from "../middlewares/errorHandler";
 
-
+import { AppDataSource } from "../data-source"
 
 AppDataSource.initialize()
     .then(async () => {
-        const port = process.env.PORT || 3500
+        const port = 4500/// process.env.PORT || 4500
         const app = express();
         app.use(express.json());
 
@@ -21,8 +22,8 @@ AppDataSource.initialize()
         app.use(bodyParser.json())
 
 
-        app.use("/api/users", require("./src/routes/userRoutes"));
-        app.use("/api/items", require("./src/routes/itemRoutes"));
+        app.use("/api/users", require("../../src/routes/userRoutes"));
+        app.use("/api/items", require("../../src/routes/itemRoutes"));
         app.use(errorHandler);
 
 

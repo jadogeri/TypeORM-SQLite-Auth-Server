@@ -1,9 +1,7 @@
-import {  test } from '@jest/globals';
 import request from "supertest"
 import { fileReader } from '../../../fileReader';
 import { BASE_URL } from '../../../setupTests';
 import { IUser } from '../../../../interfaces/IUser';
-import { app } from "../../../../../index"
 
 
 export const registerUserTest = () => {
