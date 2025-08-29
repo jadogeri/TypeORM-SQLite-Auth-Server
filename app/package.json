@@ -4,7 +4,6 @@
   "description": "Node + Express app utilizing TypeORM for authorization and authentication of backend apps",
   "main": "index.ts",
   "scripts": {
-    "build": "tsc",
     "testDB:start": "nodemon src/tests/index.ts",
     "stop": "nodemon src/tests/index.ts",
     "test": "jest --coverage --testPathPatterns=tests/ --runInBand --detectOpenHandles --colors",
