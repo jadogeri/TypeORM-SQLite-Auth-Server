@@ -13,7 +13,8 @@
     "e2e": "jest --testPathPatterns=e2e.test.ts$",
     "start": "nodemon index.ts",
     "watch": "nodemon --exec ts-node -- ./src/tests/server.ts",
-    "testserver": "nodemon --exec ts-node -- ./src/tests/server.ts"
+    "testserver": "nodemon --exec ts-node -- ./src/tests/server.ts",
+    "ci": "start-server-and-test testserver && npm run e2e"
   },
   "repository": {
     "type": "git",
