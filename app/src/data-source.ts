@@ -22,7 +22,7 @@ const database = ()=>{
 
 export const AppDataSource = new DataSource({
     type: "sqlite",
-    database: database() || process.env.DATABASE as string || "sqlitedb.sqlite", // Name of your SQLite database file
+    database: database() || process.env.DATABASE as string || ":memory:", // Name of your SQLite database file
     synchronize: true, // Automatically create/update tables based on entities (for development)
     logging: false, // Set to true for detailed SQL logging
     entities: [Auth, Item, User], // List your entities here

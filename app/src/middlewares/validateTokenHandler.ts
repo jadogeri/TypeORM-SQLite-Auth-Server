@@ -53,3 +53,5 @@ const validateToken = asyncHandler(async (req : IJwtPayload, res: Response, next
 
 module.exports = validateToken;
 
+export {validateToken}
+

@@ -32,7 +32,6 @@ const exceptionHandler = (error: unknown,errorBroadcaster: Function, res : Respo
     } else if (error instanceof Error) {
         console.error("An unexpected error occurred:", error.message);
         errorBroadcaster(res, 500, error.message);
-
         
     } else {      
         console.error("An unknown error occurred:", error);

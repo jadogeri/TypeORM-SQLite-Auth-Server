@@ -44,15 +44,11 @@ AppDataSource.initialize()
 
         const port = 4500/// process.env.PORT || 4500
         app.use(express.json());
-
-
         app.use(bodyParser.json())
-
 
         app.use("/api/users", require("../../src/routes/userRoutes"));
         app.use("/api/items", require("../../src/routes/itemRoutes"));
         app.use(errorHandler);
-
 
         app.get('/', (req: Request, res : Response) => {
 
@@ -74,4 +70,5 @@ AppDataSource.initialize()
     
 
     export default server;
+    export {app}
     
