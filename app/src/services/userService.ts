@@ -10,15 +10,8 @@ import { userRepository } from "../repositories/userRepository";
  * @throws Throws an error if the user creation fails due to validation or database issues.
  */
 async function create(user : IUser) {
-      console.log("1..........................................................1")
 
-      console.log("suer to save",user)
-      console.log("user repo obuec",userRepository)
-  const createdUser =  userRepository.create(user);  
-      console.log("after creating.....................................................1")
-    console.log(createdUser, "1..........................................................1")
-
-  await userRepository.save(createdUser);
+  const createdUser =   await userRepository.save(user);
   return createdUser;
 }
 

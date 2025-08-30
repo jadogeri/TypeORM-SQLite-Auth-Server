@@ -1,10 +1,10 @@
 import { IUser } from "../../interfaces/IUser"
 export const users: IUser[] = [
     {
-        "username" : "Bruce Wayne",
-        "email" :  "BruceWayne@gmail.com",
+        "username" : "Bruce1Waugyne",
+        "email" :  "BrucggteWayne@gmail.com",
         "password" : "b@tMob1LeG0th",
-        "phone" : "1986543210"
+        "phone" : "12345678901"
 
     },
     {

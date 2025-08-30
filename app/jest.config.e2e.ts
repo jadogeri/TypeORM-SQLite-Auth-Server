@@ -11,7 +11,7 @@ export default {
     "^.+\\.(js|jsx|ts|tsx)$": "babel-jest",
   },
   transformIgnorePatterns: ["/node_modules/(?!(@josephadogeridev/auth-credential-validator-ts)/)"],
-  globalTeardown: '<rootDir>/src/tests/global-teardown2.ts',
+  globalTeardown: '<rootDir>/src/tests/global-teardown.ts',
 };
 
        

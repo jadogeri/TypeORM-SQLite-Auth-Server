@@ -56,7 +56,7 @@ export const registerUser = asyncHandler(async (req : Request, res: Response) =>
     const createdUser = await userService.create({username, email, password : hashedPassword, phone})
         console.log("2..........................................................2")
 
-    res.status(200).json(createdUser);
+    res.status(201).json(createdUser);
         console.log("3..........................................................3")
 
 

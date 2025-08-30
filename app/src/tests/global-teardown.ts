@@ -1,9 +1,10 @@
-import fs from 'fs';
-
+import fs from "fs";
 export  default function globalTeardown() {
     console.log(`running global teardown.`);
 
     const filePath =  "testDB.sqlite"
+
+    
 
   fs.unlink(filePath, (err) => {
     if (err) {

@@ -1,1 +1,1 @@
-export type ModeType = "DEV" | "PROD" | "TEST"
+export type ModeType = "DEV" | "PROD" | "TEST" | "VIRTUAL" |undefined
