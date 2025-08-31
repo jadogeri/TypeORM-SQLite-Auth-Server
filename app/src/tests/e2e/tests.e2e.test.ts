@@ -70,7 +70,7 @@ afterAll(()=>{
 
 describe('POST /users', () => {
 
-   global.localStorage = new LocalStorage('../../tests/database/storage');
+   global.localStorage = new LocalStorage('./src/tests/storage');
 
   registerUserTests()
   loginUserTests()

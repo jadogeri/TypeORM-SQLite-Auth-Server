@@ -1,12 +1,12 @@
 {
     "username": "Bruce1Waugyne",
     "email": "BrucggteWayne@gmail.com",
-    "password": "$2b$11$pkxoNKirds67q5YTpv/YAOHkb1tqmkQ9BpKwF4K2UUS8/Kut2O6nC",
+    "password": "$2b$11$7RIaaIoLmvhFgMzxWoF/zeaFcL/9fjH217.xuN8eCSEUPKCer.3lS",
     "phone": "12345678901",
     "id": 1,
     "isEnabled": true,
     "failedLogins": 0,
-    "createdAt": "2025-08-31T07:34:56.000Z",
-    "updatedAt": "2025-08-31T07:34:56.000Z",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiQnJ1Y2UxV2F1Z3luZSIsImVtYWlsIjoiQnJ1Y2dndGVXYXluZUBnbWFpbC5jb20iLCJpZCI6MX0sImlhdCI6MTc1NjYyNTY5NywiZXhwIjoxNzU2NjI3NDk3fQ.fY8U7elttLlTIXlShAtG4LjZPUM3Qef5FfyEIgtW4L8"
+    "createdAt": "2025-08-31T07:52:22.000Z",
+    "updatedAt": "2025-08-31T07:52:22.000Z",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiQnJ1Y2UxV2F1Z3luZSIsImVtYWlsIjoiQnJ1Y2dndGVXYXluZUBnbWFpbC5jb20iLCJpZCI6MX0sImlhdCI6MTc1NjYyNjc0MywiZXhwIjoxNzU2NjI4NTQzfQ.aQDEQqdSKqmdtAv3npAYubSBQJ3MmKsmjXHRUJgvADc"
 }

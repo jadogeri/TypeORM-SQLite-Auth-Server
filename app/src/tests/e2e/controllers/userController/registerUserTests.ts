@@ -14,7 +14,7 @@ export const registerUserTests = () => {
       //add new json file to __mocks__ directory
       if(!res.error)
       fileWriter(__dirname + "/../../../__mocks__/registeredUser.json" , JSON.stringify(res.body, null, 4) )
-      localStorage.setItem("user",JSON.stringify(res.body, null, 4));      
+      localStorage.setItem("userdatabase",JSON.stringify(res.body, null, 4));      
 
 
       //expect(res.body).toHaveProperty('id');
