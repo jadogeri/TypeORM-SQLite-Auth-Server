@@ -57,7 +57,7 @@ export const loginUserTests = () => {
         expect(res.status).toBe(200);  
         expect(res.body.username).toBe(user.username);
         expect(res.body.email).toBe(user.email);      
-      },6000);
+      },1000);
     });
 
   describe('Edge Cases', () => {
