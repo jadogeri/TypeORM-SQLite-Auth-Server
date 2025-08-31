@@ -1,5 +1,7 @@
 import * as dotenv from "dotenv"
 dotenv.config();
+import { LocalStorage } from "node-localstorage";
+
 
 //changing environment to test
 process.env.ENVIRONMENT = "TEST"
@@ -68,6 +70,8 @@ afterAll(()=>{
 
 describe('POST /users', () => {
 
+   global.localStorage = new LocalStorage('../../tests/database/storage');
+
   registerUserTests()
   loginUserTests()
   // test('should create a new user', async () => {
@@ -100,3 +104,5 @@ describe('POST /users', () => {
   //   //expect(createdUser?.name).toBe(newUser.name);
   // });
 });
+
+

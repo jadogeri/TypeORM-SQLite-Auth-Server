@@ -21,14 +21,16 @@ export const loginUserTests = () => {
 
         global_token= token
 
-        let data = fileReader(__dirname + "/../../../__mocks__/registeredUser.json");
+        let data = localStorage.getItem("user") //fileReader(__dirname + "/../../../__mocks__/registeredUser.json");
 
 
-        let registeredUser = await data
+        let registeredUser = await JSON.parse(data as string)
 
         const updatedUser = {...registeredUser , token : token}
 
         fileWriter(__dirname + "/../../../__mocks__/updatedUser.json" , JSON.stringify(updatedUser, null, 4) )
+        localStorage.setItem("user",JSON.stringify(updatedUser, null, 4));      
+
         
         expect(token).toBeDefined();    
       
@@ -113,6 +115,25 @@ export const loginUserTests = () => {
 
 
 
+
+
+
+
+
+/**
+ * 
+ * 
+       localStorage.setItem("user",initUser);      
+
+      let mock = localStorage.getItem("user");
+      let mockObj = JSON.parse(mock as string)
+      const res = await request(BASE_URL).post('/api/users/register').send(mockObj)    
+
+      console.log("data retrieved from test == ",JSON.stringify(res.body))
+      if(res.statusCode ===201){
+        let updatedCreds = {...mockObj,... res.body,password : mockObj.password}   
+        localStorage.setItem("user",JSON.stringify(updatedCreds, null, 2))
+ */
 
 
 

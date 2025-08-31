@@ -60,3 +60,4 @@ export const registerUser = asyncHandler(async (req : Request, res: Response) =>
     exceptionHandler(error, errorBroadcaster, res);  
   }
 });
+
