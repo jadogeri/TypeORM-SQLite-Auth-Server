@@ -15,70 +15,71 @@ export const loginUserTests = () => {
         let mockObj = userArray[0]
         console.log("login data ===", mockObj)
         const res = await request(BASE_URL).post('/users/login').send({password: mockObj.password, email : mockObj.email});
-        //           const {accessToken : token} = res.body
+                  const {accessToken : token} = res.body
 
-        // if(res.statusCode < 400){
+        if(res.statusCode < 400){
 
-        //       let data = localStorage.getItem("userdatabase") //fileReader(__dirname + "/../../../__mocks__/registeredUser.json");
+              let data = localStorage.getItem("userdatabase") //fileReader(__dirname + "/../../../__mocks__/registeredUser.json");
 
 
-        // let registeredUser = await JSON.parse(data as string)
+        let registeredUser = await JSON.parse(data as string)
 
-        // const updatedUser = {...registeredUser , token : token}
+        const updatedUser = {...registeredUser , token : token}
 
-        // localStorage.setItem("userdatabase",JSON.stringify(updatedUser, null, 4));  
+        //fileWriter(__dirname + "/../../../__mocks__/updatedUser.json" , JSON.stringify(updatedUser, null, 4) )
+        localStorage.setItem("userdatabase",JSON.stringify(updatedUser, null, 4));  
 
-        // }
+        }
         //load registered user and update with new fields
 
 
             
         
-        expect(mockObj).toBeDefined();  
+        expect(token).toBeDefined();  
  
   
       
       },6000);
 
-      // test('should return user credentials with token', async () => {
+      test('should return user credentials with token', async () => {
 
-      //   const user = userArray[0]
-      //   let stringdata = localStorage.getItem("userdatabase")
-      //   const userdata =  await JSON.parse(stringdata as string)
+        const user = userArray[0]
+        let stringdata = localStorage.getItem("userdatabase")
+        const userdata =  await JSON.parse(stringdata as string)
 
-      //   const res = await request(BASE_URL).get('/users/current').set('Authorization', `Bearer ${userdata?.token}`)
+        const res = await request(BASE_URL).get('/users/current').set('Authorization', `Bearer ${userdata?.token}`)
 
-      //   expect(res.status).toBe(200);  
-      //   expect(res.body.username).toBe(user.username);
-      //   expect(res.body.email).toBe(user.email);      
-      // },1000);
+        expect(res.status).toBe(200);  
+        expect(res.body.username).toBe(user.username);
+        expect(res.body.email).toBe(user.email);      
+      },1000);
     });
 
-  // describe('Edge Cases', () => {
+  describe('Edge Cases', () => {
 
-  //   test('should handle invalid password gracefully ', async () => {
-  //     let mockObj = userArray[1]
-  //     const res = await request(BASE_URL).post('/users/login').send({password: mockObj.password, email : mockObj.email});
+    test('should handle invalid password gracefully ', async () => {
+      let mockObj = userArray[1]
+      const res = await request(BASE_URL).post('/users/login').send({password: mockObj.password, email : mockObj.email});
 
-  //     //load registered user and update with new fields      
-  //     expect(res.status).toBe(400);
-  //     expect(res.body.message).toBe("email or password is incorrect");    
+      //load registered user and update with new fields      
+      expect(res.status).toBe(400);
+      expect(res.body.message).toBe("email or password is incorrect");    
     
-  //   },10000);
+    },10000);
 
-  //   test('should handle multiple login attempts with invalid password', async () => {
-  //     let mockObj = userArray[1]
-  //     await request(BASE_URL).post('/users/login').send({password: mockObj.password, email : mockObj.email});
-  //     const res =  await request(BASE_URL).post('/users/login').send({password: mockObj.password, email : mockObj.email});
+    test('should handle multiple login attempts with invalid password', async () => {
+      let mockObj = userArray[1]
+      await request(BASE_URL).post('/users/login').send({password: mockObj.password, email : mockObj.email});
+      const res =  await request(BASE_URL).post('/users/login').send({password: mockObj.password, email : mockObj.email});
 
-  //     //load registered user and update with new fields
+      //load registered user and update with new fields
       
-  //     expect(res.status).toBe(423);
-  //     expect(res.text).toContain("Account is locked beacause of too many failed login attempts. Use forget account to access acount");    
+      expect(res.status).toBe(423);
+      expect(res.text).toContain("Account is locked beacause of too many failed login attempts. Use forget account to access acount");    
     
-  //   },10000);
+    },10000);
 
-  // });
+  });
 /*
   
     test('should reject duplicate email user accounts grafecully', async () => {
@@ -108,7 +109,6 @@ export const loginUserTests = () => {
       expect(res.status).toBe(500);
     });
 
-    */
 
   }, );
 };

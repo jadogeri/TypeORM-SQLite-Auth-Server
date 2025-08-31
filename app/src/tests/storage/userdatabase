@@ -1,11 +1,12 @@
 {
     "username": "Bruce1Waugyne",
     "email": "BrucggteWayne@gmail.com",
-    "password": "$2b$11$jDV98o/AWMt1mxUM5Bvple1qxuy0cqGBxAPIlOUF8OH4iB7sOZPNy",
+    "password": "$2b$11$8wNlAx/HHiEFBT2paC596uVTcDzyfMUfoKVE0rtRp1bkcMZ6ZJfT2",
     "phone": "12345678901",
     "id": 1,
     "isEnabled": true,
     "failedLogins": 0,
-    "createdAt": "2025-08-31T08:52:28.000Z",
-    "updatedAt": "2025-08-31T08:52:28.000Z"
+    "createdAt": "2025-08-31T08:55:26.000Z",
+    "updatedAt": "2025-08-31T08:55:26.000Z",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiQnJ1Y2UxV2F1Z3luZSIsImVtYWlsIjoiQnJ1Y2dndGVXYXluZUBnbWFpbC5jb20iLCJpZCI6MX0sImlhdCI6MTc1NjYzMDUyNiwiZXhwIjoxNzU2NjMyMzI2fQ.BvEn_ntrAm8AFn_84IOiE_Sflq6FA9Ad9p8_dbAZER4"
 }
