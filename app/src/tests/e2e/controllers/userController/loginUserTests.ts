@@ -3,53 +3,54 @@ import {  test, describe,  expect } from '@jest/globals';
 import request from 'supertest';
 import { BASE_URL } from '../../../setupTests';
 import { users as userArray } from '../../../__mocks__/usersList';
-import { fileWriter } from '../../../fileWriter';
-import { fileReader } from '../../../fileReader';
 
-let global_token: any ;
 export const loginUserTests = () => {
   describe('login User Tests', () => {
 
     describe('Happy Paths', () => {
 
-      // test('should login user successfully', async () => {
-      //   let mockObj = userArray[0]
-      //   console.log("login data ===", mockObj)
-      //   const res = await request(BASE_URL).post('/users/login').send({password: mockObj.password, email : mockObj.email});
-      //             const {accessToken : token} = res.body
+      test('should login user successfully', async () => {
+        let mockObj = userArray[0]
+        console.log("login data ===", mockObj)
+        const res = await request(BASE_URL).post('/users/login').send({password: mockObj.password, email : mockObj.email});
+                  const {accessToken : token} = res.body
 
-      //   if(res.statusCode < 400){
+        if(res.statusCode < 400){
 
-      //         let data = localStorage.getItem("userdatabase") //fileReader(__dirname + "/../../../__mocks__/registeredUser.json");
+              let data = localStorage.getItem("userdatabase") //fileReader(__dirname + "/../../../__mocks__/registeredUser.json");
 
 
-      //   let registeredUser = await JSON.parse(data as string)
+        let registeredUser = await JSON.parse(data as string)
 
-      //   const updatedUser = {...registeredUser , token : token}
+        const updatedUser = {...registeredUser , token : token}
 
-      //   //fileWriter(__dirname + "/../../../__mocks__/updatedUser.json" , JSON.stringify(updatedUser, null, 4) )
-      //   localStorage.setItem("userdatabase",JSON.stringify(updatedUser, null, 4));  
+        //fileWriter(__dirname + "/../../../__mocks__/updatedUser.json" , JSON.stringify(updatedUser, null, 4) )
+        localStorage.setItem("userdatabase",JSON.stringify(updatedUser, null, 4));  
 
-      //   }
-      //   //load registered user and update with new fields           
+        }
+        //load registered user and update with new fields
+
+
+            
         
-      //   expect(token).toBeDefined();  
-   
+        expect(token).toBeDefined();  
+ 
+  
       
-      // },6000);
+      },6000);
 
-      // test('should return user credentials with token', async () => {
+      test('should return user credentials with token', async () => {
 
-      //   const user = userArray[0]
-      //   let stringdata = localStorage.getItem("userdatabase")
-      //   const userdata =  await JSON.parse(stringdata as string)
+        const user = userArray[0]
+        let stringdata = localStorage.getItem("userdatabase")
+        const userdata =  await JSON.parse(stringdata as string)
 
-      //   const res = await request(BASE_URL).get('/users/current').set('Authorization', `Bearer ${userdata?.token}`)
+        const res = await request(BASE_URL).get('/users/current').set('Authorization', `Bearer ${userdata?.token}`)
 
-      //   expect(res.status).toBe(200);  
-      //   expect(res.body.username).toBe(user.username);
-      //   expect(res.body.email).toBe(user.email);      
-      // },1000);
+        expect(res.status).toBe(200);  
+        expect(res.body.username).toBe(user.username);
+        expect(res.body.email).toBe(user.email);      
+      },1000);
     });
 
   describe('Edge Cases', () => {

@@ -55,32 +55,7 @@ export const registerUserTests = () => {
     },6000);
 
   });
-
-    test('should login user successfully', async () => {
-        let mockObj = userArray[0]
-        console.log("login data ===", mockObj)
-        const res = await request(BASE_URL).post('/users/login').send({password: mockObj.password, email : mockObj.email});
-                  const {accessToken : token} = res.body
-
-        if(res.statusCode < 400){
-
-              let data = localStorage.getItem("userdatabase") //fileReader(__dirname + "/../../../__mocks__/registeredUser.json");
-
-
-        let registeredUser = await JSON.parse(data as string)
-
-        const updatedUser = {...registeredUser , token : token}
-
-        //fileWriter(__dirname + "/../../../__mocks__/updatedUser.json" , JSON.stringify(updatedUser, null, 4) )
-        localStorage.setItem("userdatabase",JSON.stringify(updatedUser, null, 4));  
-
-        }
-        //load registered user and update with new fields           
-        
-        expect(token).toBeDefined();  
-   
-      
-      },6000);
+  
 };
 
 

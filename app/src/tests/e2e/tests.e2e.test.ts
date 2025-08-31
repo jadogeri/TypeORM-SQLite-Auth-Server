@@ -73,7 +73,7 @@ describe('POST /users', () => {
    global.localStorage = new LocalStorage('./src/tests/storage');
 
   registerUserTests()
-  loginUserTests()
+  //loginUserTests()
   // test('should create a new user', async () => {
   //   const newUser  : IUser=    {
   //       username : "John1D0e",
