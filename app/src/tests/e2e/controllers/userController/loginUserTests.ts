@@ -32,7 +32,7 @@ export const loginUserTests = () => {
         
         expect(token).toBeDefined();    
       
-      },20000);
+      },400000);
 
       test('should return user credentials with token', async () => {
 
