@@ -24,7 +24,7 @@ export const loginUserTests = () => {
         let data = fileReader(__dirname + "/../../../__mocks__/registeredUser.json");
 
 
-        let registeredUser = await JSON.parse(data as string)
+        let registeredUser = await data
 
         const updatedUser = {...registeredUser , token : token}
 
