@@ -14,7 +14,9 @@ export const loginUserTests = () => {
         let mockObj = userArray[0]
         console.log("login data ===", mockObj)
         const res = await request(BASE_URL).post('/users/login').send({password: mockObj.password, email : mockObj.email});
-                  const {accessToken } = res.body
+                  const {accessToken } = await res.body
+  console.log("res data: ",res.body);
+  console.log("status code", res.statusCode)
 
         if(res.statusCode < 400){
 
@@ -35,6 +37,8 @@ export const loginUserTests = () => {
             
         
         expect(accessToken).toBeDefined();  
+            expect(res.statusCode).toBe(200);  
+
  
   
       
