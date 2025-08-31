@@ -114,6 +114,7 @@ export const loginUserTests = () => {
 };
 
 
+*/
 
 
 
@@ -127,22 +128,6 @@ export const loginUserTests = () => {
 
 
 
-/**
- * 
- * 
-       localStorage.setItem("user",initUser);      
-
-      let mock = localStorage.getItem("user");
-      let mockObj = JSON.parse(mock as string)
-      const res = await request(BASE_URL).post('/api/users/register').send(mockObj)    
-
-      console.log("data retrieved from test == ",JSON.stringify(res.body))
-      if(res.statusCode ===201){
-        let updatedCreds = {...mockObj,... res.body,password : mockObj.password}   
-        localStorage.setItem("user",JSON.stringify(updatedCreds, null, 2))
- */
 
 
-
-
-
+  })}
