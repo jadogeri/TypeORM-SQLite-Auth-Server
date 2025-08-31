@@ -3,6 +3,8 @@ import {  test, describe,  expect } from '@jest/globals';
 import request from 'supertest';
 import { BASE_URL } from '../../../setupTests';
 import { users as userArray } from '../../../__mocks__/usersList';
+import { fileWriter } from '../../../fileWriter';
+import { fileReader } from '../../../fileReader';
 
 
 export const loginUserTests = () => {
@@ -12,36 +14,24 @@ export const loginUserTests = () => {
 
       test('should login user successfully', async () => {
         let mockObj = userArray[0]
-        console.log("login data ===", mockObj)
         const res = await request(BASE_URL).post('/users/login').send({password: mockObj.password, email : mockObj.email});
-                  const {accessToken } = await res.body
-  console.log("res data: ",res.body);
-  console.log("status code", res.statusCode)
+        const {accessToken } = await res.body
 
         if(res.statusCode < 400){
 
-              let data = localStorage.getItem("userdatabase")
-               //fileReader(__dirname + "/../../../__mocks__/registeredUser.json");
+          let data = localStorage.getItem("userdatabase")
+          fileReader(__dirname + "/../../../__mocks__/registeredUser.json");
+          let registeredUser = await JSON.parse(data as string)
 
+          const updatedUser = {...registeredUser , token : accessToken}
 
-        let registeredUser = await JSON.parse(data as string)
+          fileWriter(__dirname + "/../../../__mocks__/updatedUser.json" , JSON.stringify(updatedUser, null, 4) )
+          localStorage.setItem("userdatabase",JSON.stringify(updatedUser, null, 4));  
 
-        const updatedUser = {...registeredUser , token : accessToken}
-
-        //fileWriter(__dirname + "/../../../__mocks__/updatedUser.json" , JSON.stringify(updatedUser, null, 4) )
-        localStorage.setItem("userdatabase",JSON.stringify(updatedUser, null, 4));  
-
-        }
-        //load registered user and update with new fields
-
-
-            
+        }          
         
         expect(accessToken).toBeDefined();  
-            expect(res.statusCode).toBe(200);  
-
- 
-  
+        expect(res.statusCode).toBe(200);    
       
       },6000);
 
