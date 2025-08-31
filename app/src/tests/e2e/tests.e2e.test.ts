@@ -67,19 +67,9 @@ afterAll(()=>{
 
 
 describe('POST /users', () => {
-  describe("",()=>{
-      registerUserTests()
 
-
-  })
-
-    describe("",()=>{
+  registerUserTests()
   loginUserTests()
-
-
-  })
-  // registerUserTests()
-  // loginUserTests()
   // test('should create a new user', async () => {
   //   const newUser  : IUser=    {
   //       username : "John1D0e",
