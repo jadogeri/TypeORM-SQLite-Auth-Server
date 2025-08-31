@@ -5,7 +5,6 @@ import { BASE_URL } from '../../../setupTests';
 import { users as userArray } from '../../../__mocks__/usersList';
 
 
-let token : string = ""
 export const loginUserTests = () => {
   describe('login User Tests', () => {
 
@@ -16,7 +15,6 @@ export const loginUserTests = () => {
         console.log("login data ===", mockObj)
         const res = await request(BASE_URL).post('/users/login').send({password: mockObj.password, email : mockObj.email});
                   const {accessToken } = res.body
-                  token = accessToken
 
         if(res.statusCode < 400){
 
@@ -25,7 +23,7 @@ export const loginUserTests = () => {
 
         let registeredUser = await JSON.parse(data as string)
 
-        const updatedUser = {...registeredUser , token : token}
+        const updatedUser = {...registeredUser , token : accessToken}
 
         //fileWriter(__dirname + "/../../../__mocks__/updatedUser.json" , JSON.stringify(updatedUser, null, 4) )
         localStorage.setItem("userdatabase",JSON.stringify(updatedUser, null, 4));  
@@ -36,7 +34,7 @@ export const loginUserTests = () => {
 
             
         
-        expect(token).toBeDefined();  
+        expect(accessToken).toBeDefined();  
  
   
       
