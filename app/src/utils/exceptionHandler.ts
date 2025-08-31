@@ -1,6 +1,17 @@
 import { Response } from "express";
 import { QueryFailedError } from "typeorm";
 
+/**
+ * Handles various types of errors and broadcasts appropriate responses.
+ * It distinguishes between database query errors, response errors, syntax errors, 
+ * and general errors, logging relevant information and sending a response.
+ * 
+ * @param {unknown} error - The error object to handle.
+ * @param {Function} errorBroadcaster - Function to send error responses.
+ * @param {Response} res - The response object to send the error response.
+ * @returns {void}
+ * @throws {void} - Does not throw exceptions but logs errors.
+ */
 const exceptionHandler = (error: unknown,errorBroadcaster: Function, res : Response) => {
    if (error instanceof QueryFailedError) {
       console.error("Database query failed:", error.message);
