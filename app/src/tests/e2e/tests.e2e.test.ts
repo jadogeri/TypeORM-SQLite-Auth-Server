@@ -4,7 +4,7 @@ import { LocalStorage } from "node-localstorage";
 
 
 //changing environment to test
-process.env.ENVIRONMENT = "TEST"
+process.env.ENVIRONMENT = "VIRTUAL"
 
 import "reflect-metadata";
 import express, { Response, Request } from "express";
