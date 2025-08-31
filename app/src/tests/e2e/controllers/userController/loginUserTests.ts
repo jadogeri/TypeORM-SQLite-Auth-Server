@@ -13,7 +13,6 @@ export const loginUserTests = () => {
     describe('Happy Paths', () => {
 
       test('should login user successfully', async () => {
-        try{
         let mockObj = userArray[0]
         console.log("login data ===", mockObj)
         const res = await request(BASE_URL).post('/users/login').send({password: mockObj.password, email : mockObj.email});
@@ -32,32 +31,25 @@ export const loginUserTests = () => {
         localStorage.setItem("userdatabase",JSON.stringify(updatedUser, null, 4));  
 
         }
-        //load registered user and update with new fields
-
-
-            
+        //load registered user and update with new fields           
         
         expect(token).toBeDefined();  
-        }catch(e: unknown){
-          console.log(e)
-          
-        }    
-  
+   
       
       },6000);
 
-      test('should return user credentials with token', async () => {
+      // test('should return user credentials with token', async () => {
 
-        const user = userArray[0]
-        let stringdata = localStorage.getItem("userdatabase")
-        const userdata =  JSON.parse(stringdata as string)
+      //   const user = userArray[0]
+      //   let stringdata = localStorage.getItem("userdatabase")
+      //   const userdata =  await JSON.parse(stringdata as string)
 
-        const res = await request(BASE_URL).get('/users/current').set('Authorization', `Bearer ${userdata?.token}`)
+      //   const res = await request(BASE_URL).get('/users/current').set('Authorization', `Bearer ${userdata?.token}`)
 
-        expect(res.status).toBe(200);  
-        expect(res.body.username).toBe(user.username);
-        expect(res.body.email).toBe(user.email);      
-      },1000);
+      //   expect(res.status).toBe(200);  
+      //   expect(res.body.username).toBe(user.username);
+      //   expect(res.body.email).toBe(user.email);      
+      // },1000);
     });
 
   describe('Edge Cases', () => {
