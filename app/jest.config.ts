@@ -1,15 +1,3 @@
-// import { createDefaultPreset } from "ts-jest";
-
-// const tsJestTransformCfg = createDefaultPreset().transform;
-
-// /** @type {import("jest").Config} **/
-// export default {
-//   testEnvironment: "node",
-//   transform: {
-//     ...tsJestTransformCfg,
-//   },
-// };
-
 
  import { createDefaultPreset } from "ts-jest";
 
@@ -25,6 +13,9 @@ export default {
   transformIgnorePatterns: ["/node_modules/(?!(@josephadogeridev/auth-credential-validator-ts)/)"],
   globalTeardown: '<rootDir>/src/tests/global-teardown.ts',
   setupFilesAfterEnv: ['<rootDir>/setup.ts'],
-  globalSetup: '<rootDir>/src/tests/global-teardown.ts',};
+  globalSetup: '<rootDir>/src/tests/global-teardown.ts',
+  testRunner: "jest-circus/runner",
+  workerIdleMemoryLimit: "512MB"
 
-       
+};
+
