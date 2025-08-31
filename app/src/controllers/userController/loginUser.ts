@@ -16,6 +16,7 @@ import { IUserLogin } from "../../interfaces/IUserLogin";
 import Validator from "@josephadogeridev/auth-credential-validator-ts";
 import { User } from "../../entities/User";
 import { IAuth } from "../../interfaces/IAuth";
+import exceptionHandler from "../../utils/exceptionHandler";
 
 /**
 *@desc Login user
@@ -96,7 +97,7 @@ export const loginUser = asyncHandler(async (req : Request, res: Response)  => {
     }
 
   }catch(error : unknown){
-    //exceptionHandler(error, errorBroadcaster, res);  
+    exceptionHandler(error, errorBroadcaster, res);  
   }
 
 });
