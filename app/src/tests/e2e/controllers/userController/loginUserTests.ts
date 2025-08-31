@@ -5,7 +5,7 @@ import { BASE_URL } from '../../../setupTests';
 import { users as userArray } from '../../../__mocks__/usersList';
 
 
-
+let token : string = ""
 export const loginUserTests = () => {
   describe('login User Tests', () => {
 
@@ -15,7 +15,8 @@ export const loginUserTests = () => {
         let mockObj = userArray[0]
         console.log("login data ===", mockObj)
         const res = await request(BASE_URL).post('/users/login').send({password: mockObj.password, email : mockObj.email});
-                  const {accessToken : token} = res.body
+                  const {accessToken } = res.body
+                  token = accessToken
 
         if(res.statusCode < 400){
 

@@ -1,11 +1,11 @@
 {
     "username": "Bruce1Waugyne",
     "email": "BrucggteWayne@gmail.com",
-    "password": "$2b$11$DxhS5CuK5OmT/8YxSd6yceIMfeqRXAbliEWo3orbzq1DmB.7uDsGe",
+    "password": "$2b$11$hvCN5/2fx7mKg9NA8sQQ4uDeIXUuaaOgKEMfdjQugr.rnDzWVoWlu",
     "phone": "12345678901",
     "id": 1,
     "isEnabled": true,
     "failedLogins": 0,
-    "createdAt": "2025-08-31T08:58:53.000Z",
-    "updatedAt": "2025-08-31T08:58:53.000Z"
+    "createdAt": "2025-08-31T09:02:20.000Z",
+    "updatedAt": "2025-08-31T09:02:20.000Z"
 }
