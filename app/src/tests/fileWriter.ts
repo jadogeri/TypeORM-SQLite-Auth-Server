@@ -10,7 +10,7 @@ export const fileWriter = (filePath: string, data : string) =>  {
             console.error('Failed to write JSON to file:', err);
             return;
         }
-        console.log(`Successfully wrote JSON data to ${filePath}`);
+        //console.log(`Successfully wrote JSON data to ${filePath}`);
     });  
 
 }
