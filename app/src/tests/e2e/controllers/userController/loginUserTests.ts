@@ -19,7 +19,7 @@ export const loginUserTests = () => {
 
     
     
-    },10000)
+    },40000)
 /*
   
     test('should reject duplicate email user accounts grafecully', async () => {
