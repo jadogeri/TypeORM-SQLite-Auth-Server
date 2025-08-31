@@ -43,6 +43,11 @@ sqlitedb.sqlite
 testDB.sqlite
 devDB.sqlite
 prodDB.sqlite
+storage
+
+# data
+registeredUser.json
+updatedUser.json
 
 
 Dockerfile

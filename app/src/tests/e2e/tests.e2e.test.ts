@@ -16,6 +16,7 @@ import { errorHandler } from "../../middlewares/errorHandler";
 import { AppDataSource } from "../../data-source";
 import { IncomingMessage, Server, ServerResponse } from "http";
 import { loginUserTests } from "./controllers/userController/loginUserTests";
+import { forgotUserTests } from "./controllers/userController/forgotUserTests";
 
 let server : Server<typeof IncomingMessage, typeof ServerResponse> ;
 let app = express()
@@ -74,6 +75,7 @@ describe('POST /users', () => {
 
   registerUserTests()
   loginUserTests()
+  forgotUserTests()
   // test('should create a new user', async () => {
   //   const newUser  : IUser=    {
   //       username : "John1D0e",
