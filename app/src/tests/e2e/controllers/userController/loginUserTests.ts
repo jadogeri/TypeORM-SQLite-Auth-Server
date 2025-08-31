@@ -3,23 +3,73 @@ import {  test, describe,  expect } from '@jest/globals';
 import request from 'supertest';
 import { BASE_URL } from '../../../setupTests';
 import { users as userArray } from '../../../__mocks__/usersList';
-import { IUser } from '../../../../interfaces/IUser';
+import { fileWriter } from '../../../fileWriter';
+import { fileReader } from '../../../fileReader';
 
-
+let global_token: any ;
 export const loginUserTests = () => {
   describe('login User Tests', () => {
-    test('should login user successfully', async () => {
+
+    describe('Happy Paths', () => {
+
+      test('should login user successfully', async () => {
         let mockObj = userArray[0]
-        console.log("user to auth.......................", mockObj)
         const res = await request(BASE_URL).post('/users/login').send({password: mockObj.password, email : mockObj.email});
 
-        console.log("data retrieved from test == ",JSON.stringify(res.body), typeof res.body)
         const {accessToken : token} = res.body
-        expect(token).toBeDefined();
+        //load registered user and update with new fields
 
+        global_token= token
+
+        let data = fileReader(__dirname + "/../../../__mocks__/registeredUser.json");
+
+
+        let registeredUser = await JSON.parse(data as string)
+
+        const updatedUser = {...registeredUser , token : token}
+
+        fileWriter(__dirname + "/../../../__mocks__/updatedUser.json" , JSON.stringify(updatedUser, null, 4) )
+        
+        expect(token).toBeDefined();    
+      
+      },6000);
+
+      test('should return user credentials with token', async () => {
+
+        const user = userArray[0]
+        const res = await request(BASE_URL).get('/users/current').set('Authorization', `Bearer ${global_token as string}`)
+
+        expect(res.status).toBe(200);  
+        expect(res.body.username).toBe(user.username);
+        expect(res.body.email).toBe(user.email);      
+      },6000);
+    });
+
+  describe('Edge Cases', () => {
+
+    test('should handle invalid password gracefully ', async () => {
+      let mockObj = userArray[1]
+      const res = await request(BASE_URL).post('/users/login').send({password: mockObj.password, email : mockObj.email});
+
+      //load registered user and update with new fields      
+      expect(res.status).toBe(400);
+      expect(res.body.message).toBe("email or password is incorrect");    
     
+    },10000);
+
+    test('should handle multiple login attempts with invalid password', async () => {
+      let mockObj = userArray[1]
+      await request(BASE_URL).post('/users/login').send({password: mockObj.password, email : mockObj.email});
+      const res =  await request(BASE_URL).post('/users/login').send({password: mockObj.password, email : mockObj.email});
+
+      //load registered user and update with new fields
+      
+      expect(res.status).toBe(423);
+      expect(res.text).toContain("Account is locked beacause of too many failed login attempts. Use forget account to access acount");    
     
-    },)
+    },10000);
+
+  });
 /*
   
     test('should reject duplicate email user accounts grafecully', async () => {

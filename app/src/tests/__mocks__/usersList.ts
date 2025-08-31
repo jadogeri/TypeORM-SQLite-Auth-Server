@@ -10,7 +10,7 @@ export const users: IUser[] = [
     {
         "username" : "Peter1Waugyne",
         "email" :  "BrucggteWayne@gmail.com",
-        "password" : "b@tMob1LeG0th",
+        "password" : "@btMob1LeG0th",
         "phone" : "12345678901"
 
     },
