@@ -20,7 +20,8 @@ export const loginUserTests = () => {
 
         if(res.statusCode < 400){
 
-              let data = localStorage.getItem("userdatabase") //fileReader(__dirname + "/../../../__mocks__/registeredUser.json");
+              let data = localStorage.getItem("userdatabase")
+               //fileReader(__dirname + "/../../../__mocks__/registeredUser.json");
 
 
         let registeredUser = await JSON.parse(data as string)
