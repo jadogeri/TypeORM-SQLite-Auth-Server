@@ -13,8 +13,8 @@ export const loginUserTests = () => {
 
       test('should login user successfully', async () => {
         let mockObj = userArray[0]
-        // console.log("login data ===", mockObj)
-        // const res = await request(BASE_URL).post('/users/login').send({password: mockObj.password, email : mockObj.email});
+        console.log("login data ===", mockObj)
+        const res = await request(BASE_URL).post('/users/login').send({password: mockObj.password, email : mockObj.email});
         //           const {accessToken : token} = res.body
 
         // if(res.statusCode < 400){
