@@ -33,7 +33,6 @@ export const registerUser = asyncHandler(async (req : Request, res: Response) =>
   }
   const validator = new Validator(username as string,email as string,password as string);
 
-  console.log(validator.getCredential)
   if(!validator.validateEmail()){
     errorBroadcaster(res,553,"not a valid email");
   }
@@ -52,12 +51,9 @@ export const registerUser = asyncHandler(async (req : Request, res: Response) =>
   //Hash password
   const hashedPassword : string = await hash(password as string, parseInt(process.env.BCRYPT_SALT_ROUNDS as string));
   try{
-    console.log("1..........................................................1")
     const createdUser = await userService.create({username, email, password : hashedPassword, phone})
-        console.log("2..........................................................2")
 
     res.status(201).json(createdUser);
-        console.log("3..........................................................3")
 
 
   }catch(error : unknown){

@@ -1,30 +1,26 @@
+
 import {  test, describe,  expect } from '@jest/globals';
 import request from 'supertest';
 import { BASE_URL } from '../../../setupTests';
 import { users as userArray } from '../../../__mocks__/usersList';
 import { IUser } from '../../../../interfaces/IUser';
-import { fileWriter } from '../../../fileWriter';
-
-export const registerUserTests = () => {
-  describe('Register User Tests', () => {
-
-    test('should create a new user', async () => {
-      const newUser = userArray[0]
-      const res = await request(BASE_URL).post('/users/register').send(newUser as IUser)   
-      //add new json file to __mocks__ directory
-      fileWriter(__dirname + "/../../../__mocks__/registeredUser.json" , JSON.stringify(res.body, null, 4) )
-
-      //expect(res.body).toHaveProperty('id');
-      expect(res.body.failedLogins).toBe(0);
-      expect(res.body.email).toBe(newUser.email);
 
 
-      // Verify data in the database
-      // const createdUser = await getRepository(User).findOne({ where: { email: newUser.email } });
-      //expect(createdUser).toBeDefined();
-      //expect(createdUser?.name).toBe(newUser.name);
-    },6000);
+export const loginUserTests = () => {
+  describe('login User Tests', () => {
+    test('should login user successfully', async () => {
+        let mockObj = userArray[0]
+        console.log("user to auth.......................", mockObj)
+        const res = await request(BASE_URL).post('/users/login').send({password: mockObj.password, email : mockObj.email});
 
+        console.log("data retrieved from test == ",JSON.stringify(res.body), typeof res.body)
+        const {accessToken : token} = res.body
+        expect(token).toBeDefined();
+
+    
+    
+    })
+/*
   
     test('should reject duplicate email user accounts grafecully', async () => {
       const newUser = userArray[1]
@@ -36,7 +32,7 @@ export const registerUserTests = () => {
       expect(text?.message).toContain("SQLITE_CONSTRAINT");
       expect(text?.message).toContain(" UNIQUE constraint failed: user.email");
       expect(res.status).toBe(500);
-    },6000);
+    });
 
 
 
@@ -46,11 +42,29 @@ export const registerUserTests = () => {
       .post('/users/register')
       .send(newUser as IUser)
       const text = JSON.parse(res.text);
+      console.log("text...........................................", text)
       expect(text?.title).toBe("Server Error");
       expect(text?.message).toContain("SQLITE_CONSTRAINT");
       expect(text?.message).toContain("UNIQUE constraint failed: user.username");
       expect(res.status).toBe(500);
-    },6000);
+    });
+
+    */
 
   });
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

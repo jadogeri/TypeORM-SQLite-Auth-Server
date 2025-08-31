@@ -12,6 +12,9 @@ export default {
   },
   transformIgnorePatterns: ["/node_modules/(?!(@josephadogeridev/auth-credential-validator-ts)/)"],
   globalTeardown: '<rootDir>/src/tests/global-teardown.ts',
+  setupFilesAfterEnv: ['<rootDir>/setup.e2e.ts'],
+  globalSetup: '<rootDir>/src/tests/global-teardown.ts',
+
 };
 
        

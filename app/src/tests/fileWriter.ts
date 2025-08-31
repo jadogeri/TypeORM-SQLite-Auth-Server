@@ -3,10 +3,14 @@
 
 import * as fs from 'fs';
 
-export const fileWriter = () =>  {
+export const fileWriter = (filePath: string, data : string) =>  {
 
-    console.log("running file writer")
-    const file = "hello.txt"
-    fs.writeFileSync(file,'hello by test db');    
+    fs.writeFile(filePath, data, (err) => {
+        if (err) {
+            console.error('Failed to write JSON to file:', err);
+            return;
+        }
+        console.log(`Successfully wrote JSON data to ${filePath}`);
+    });  
 
 }

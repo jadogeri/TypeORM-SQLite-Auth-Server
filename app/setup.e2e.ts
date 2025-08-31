@@ -1,4 +1,4 @@
-// setup.unit.ts
+// setup.e2e.ts
 
 beforeEach(() => {
   jest.resetAllMocks();
