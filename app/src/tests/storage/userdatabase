@@ -1,12 +1,5 @@
 {
-    "username": "Bruce1Waugyne",
-    "email": "BrucggteWayne@gmail.com",
-    "password": "$2b$11$4yupw/NKEzJESI2KHsl/..4UlTryJF9L5hiNPeNMnzob1sE7jsEWa",
-    "phone": "12345678901",
-    "id": 1,
-    "isEnabled": true,
-    "failedLogins": 0,
-    "createdAt": "2025-08-31T08:14:10.000Z",
-    "updatedAt": "2025-08-31T08:14:10.000Z",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiQnJ1Y2UxV2F1Z3luZSIsImVtYWlsIjoiQnJ1Y2dndGVXYXluZUBnbWFpbC5jb20iLCJpZCI6MX0sImlhdCI6MTc1NjYyODA1MSwiZXhwIjoxNzU2NjI5ODUxfQ.jmrTrfII-etlgjJNgCy-tjzwbZAEd1F2hTJ5N7HCY20"
+    "title": "Server Error",
+    "message": "SQLITE_CONSTRAINT: UNIQUE constraint failed: user.email",
+    "stackTrace": "Error: SQLITE_CONSTRAINT: UNIQUE constraint failed: user.email\n    at errorBroadcaster (C:\\Users\\Joseph\\Desktop\\Source\\TypeORM-SQLite-Auth-Server\\app\\src\\utils\\errorBroadcaster.ts:19:11)\n    at exceptionHandler (C:\\Users\\Joseph\\Desktop\\Source\\TypeORM-SQLite-Auth-Server\\app\\src\\utils\\exceptionHandler.ts:27:11)\n    at C:\\Users\\Joseph\\Desktop\\Source\\TypeORM-SQLite-Auth-Server\\app\\src\\controllers\\userController\\registerUser.ts:60:21"
 }
