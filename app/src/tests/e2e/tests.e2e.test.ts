@@ -24,6 +24,7 @@ import { getAllItemsTests } from "./controllers/itemController/getAllItemsTests"
 import { getSingleItemTests } from "./controllers/itemController/getSingleItemTests";
 import { deleteSingleItemTests } from "./controllers/itemController/deleteSingleItemTests";
 import { deleteAllItemsTests } from "./controllers/itemController/deleteAllItemsTests";
+import { updateItemTests } from "./controllers/itemController/updateItemTests";
 
 let server : Server<typeof IncomingMessage, typeof ServerResponse> ;
 let app = express()
@@ -88,6 +89,7 @@ describe('POST /users', () => {
   createItemTests();
   getAllItemsTests();
   getSingleItemTests();
+  updateItemTests()
   deleteSingleItemTests()
   deleteAllItemsTests()
   // test('should create a new user', async () => {
