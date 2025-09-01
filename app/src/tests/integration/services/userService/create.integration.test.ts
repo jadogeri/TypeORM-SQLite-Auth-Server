@@ -1,5 +1,5 @@
 
-import { User } from "../../../../entities";
+// import { User } from "../../../../entities";
 import { IUser } from "../../../../interfaces/IUser";
 import { create } from '../../../../services/userService';
 
@@ -12,7 +12,7 @@ class MockuserRepository {
 // Save original userRepository to restore after tests
 const originalUserRepository = jest.requireActual("../../../../repositories/userRepository").userRepository;
 
-// Replace userRepository with our mock
+//Replace userRepository with our mock
 // jest.mock("../../../../repositories/userRepository", () => {
 //   return {
 //     userRepository: new MockuserRepository() as any,
@@ -39,7 +39,7 @@ describe('create() create method', () => {
     test('should create a user with all fields provided', async () => {
       // This test ensures that a user with all fields is created successfully.
       const inputUser: IUser = {
-        id: 1,
+        // id: 1,
         email: 'test@example.com',
         password: 'securepassword',
         username: 'testuser',
@@ -70,7 +70,7 @@ describe('create() create method', () => {
 
       const createdUser = {
         ...inputUser,
-        id: 2,
+        // id: 2,
         createdAt: new Date(),
       };
 
