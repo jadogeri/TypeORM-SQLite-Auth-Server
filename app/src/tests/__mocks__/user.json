@@ -1,15 +1,15 @@
 {
     "username": "Bruce1Waugyne",
     "email": "BrucggteWayne@gmail.com",
-    "password": "EFBBg3MiTJL",
+    "password": "M86eMUCLhHL",
     "phone": "12345678901",
     "id": 1,
     "isEnabled": true,
     "failedLogins": 0,
-    "createdAt": "2025-09-01T06:08:16.000Z",
-    "updatedAt": "2025-09-01T06:08:16.000Z",
-    "salted_password": "$2b$11$lhcAzAPps.xW/VXtz4cpuOS/rwQ00o.pq.M5h3HKNQ/mObhz1qLMS",
+    "createdAt": "2025-09-01T06:12:35.000Z",
+    "updatedAt": "2025-09-01T06:12:35.000Z",
+    "salted_password": "$2b$11$NCqxUrCt0Ez8xf.QY.BbYesHRGTCo.8AuPPNNqXuz6Z/53c/uh.Qq",
     "token": null,
-    "old_password": "EFBBg3MiTJL",
+    "old_password": "M86eMUCLhHL",
     "new_password": "Test12345@"
 }

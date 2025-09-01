@@ -51,9 +51,10 @@ userdatabase
 itemsdatabase
 items.json
 
+
 # data
-registeredUser.json
-updatedUser.json
+user.json
+items.json
 
 
 Dockerfile
