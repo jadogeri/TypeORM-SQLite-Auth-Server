@@ -20,7 +20,7 @@ import exceptionHandler from '../../utils/exceptionHandler';
 
 export const logoutUser = asyncHandler(async (req: Request, res : Response) => {
    
-  const {token} :IUserAuthorized = req.body
+  const {token} :IUserAuthorized = await req.body
   try{
     if(!token){ 
       errorBroadcaster(res,400,"field token is mandatory");

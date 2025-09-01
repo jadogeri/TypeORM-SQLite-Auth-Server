@@ -29,7 +29,7 @@ async function getByUserId(itemId : number, user: User) {
 
 async function create(item : IItem) {
   const createdItem : Item | null = await itemRepository.save(item);
-  console.log("created item\n", JSON.stringify(createdItem, null, 4))
+//  console.log("created item\n", JSON.stringify(createdItem, null, 4))
 
   return  createdItem;
 }
