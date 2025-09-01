@@ -10,7 +10,10 @@ export const createItemTests = () => {
       ["lambo"], 
       ["maybach"],
       ["porsche"],
-    ])('Should Add new item (car) to user', async (car: string) => {
+      ["ferrari"],
+      ["rolls royce"],
+      ["aston martin"],
+    ])(`Should Add new item (car : %s) to user`, async (car: string) => {
       let userDatabaseAsString = localStorage.getItem("userdatabase") 
       const userDatabase = await JSON.parse(userDatabaseAsString as string);
       const res = await request(BASE_URL)
@@ -18,6 +21,7 @@ export const createItemTests = () => {
        .send({name: car}) 
        .set('Authorization', `Bearer ${userDatabase.token}`);
       let itemDatabaseAsString = localStorage.getItem("itemdatabase") 
+      const item = await res.body
      if(itemDatabaseAsString){
         let jsonData = await JSON.parse(itemDatabaseAsString);
         jsonData = [...jsonData, res.body];
@@ -32,7 +36,13 @@ export const createItemTests = () => {
         fileWriter(__dirname + "/../../../__mocks__/items.json" , JSON.stringify(itemDatabase, null, 4) )
       }
 
-      expect(car).toBeDefined();
+      expect(item).toBeDefined();
+      expect(item.name).toBe(car);
+      expect(item.user).toBeDefined();
+      expect(item.id).toBeDefined();
+      expect(item.createdAt).toBeDefined();
+      expect(item.updatedAt).toBeDefined();
+
     });
 
   });

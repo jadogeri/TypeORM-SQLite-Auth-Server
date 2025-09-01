@@ -1,6 +1,5 @@
 {
     "title": "Server Error",
     "message": "SQLITE_CONSTRAINT: UNIQUE constraint failed: user.email",
-    "stackTrace": "Error: SQLITE_CONSTRAINT: UNIQUE constraint failed: user.email\n    at errorBroadcaster (C:\\Users\\Joseph\\Desktop\\Source\\TypeORM-SQLite-Auth-Server\\app\\src\\utils\\errorBroadcaster.ts:19:11)\n    at exceptionHandler (C:\\Users\\Joseph\\Desktop\\Source\\TypeORM-SQLite-Auth-Server\\app\\src\\utils\\exceptionHandler.ts:27:11)\n    at C:\\Users\\Joseph\\Desktop\\Source\\TypeORM-SQLite-Auth-Server\\app\\src\\controllers\\userController\\registerUser.ts:60:21",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiQnJ1Y2UxV2F1Z3luZSIsImVtYWlsIjoiQnJ1Y2dndGVXYXluZUBnbWFpbC5jb20iLCJpZCI6MX0sImlhdCI6MTc1NjY5MDU0OSwiZXhwIjoxNzU2NjkyMzQ5fQ.tk5Q6Fjaz_rEpLUECtKFBP1AVbIEcUp8kGpAorRJgtg"
+    "stackTrace": "Error: SQLITE_CONSTRAINT: UNIQUE constraint failed: user.email\n    at errorBroadcaster (C:\\Users\\Joseph\\Desktop\\Source\\TypeORM-SQLite-Auth-Server\\app\\src\\utils\\errorBroadcaster.ts:19:11)\n    at exceptionHandler (C:\\Users\\Joseph\\Desktop\\Source\\TypeORM-SQLite-Auth-Server\\app\\src\\utils\\exceptionHandler.ts:27:11)\n    at C:\\Users\\Joseph\\Desktop\\Source\\TypeORM-SQLite-Auth-Server\\app\\src\\controllers\\userController\\registerUser.ts:60:21"
 }

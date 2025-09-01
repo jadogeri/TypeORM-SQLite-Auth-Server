@@ -21,6 +21,7 @@ import { loginUpdatedUserTests } from "./controllers/userController/loginUpdated
 import { currentUserTests } from "./controllers/userController/currentUserTests";
 import { createItemTests } from "./controllers/itemController/createItemTests";
 import { getAllItemsTests } from "./controllers/itemController/getAllItemsTests";
+import { getSingleItemTests } from "./controllers/itemController/getSingleItemTests";
 
 let server : Server<typeof IncomingMessage, typeof ServerResponse> ;
 let app = express()
@@ -83,7 +84,8 @@ describe('POST /users', () => {
   loginUpdatedUserTests();
   currentUserTests();
   createItemTests();
-  getAllItemsTests()
+  getAllItemsTests();
+  getSingleItemTests();
   // test('should create a new user', async () => {
   //   const newUser  : IUser=    {
   //       username : "John1D0e",
