@@ -45,6 +45,12 @@ devDB.sqlite
 prodDB.sqlite
 storage
 
+userdatabase.json
+itemsdatabase.json
+userdatabase
+itemsdatabase
+items.json
+
 # data
 registeredUser.json
 updatedUser.json
