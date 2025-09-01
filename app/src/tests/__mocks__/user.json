@@ -1,10 +1,14 @@
 {
-    "username" : "JohnDoe1",
-    "email" :  "Johndoe1@gmail.com",
-    "password" : "Test12345@",
-    "phone":"15049999999",
-    "confirm" : true,
-    "token" : "",
-    "old_password":"",
+    "username": "Bruce1Waugyne",
+    "email": "BrucggteWayne@gmail.com",
+    "password": "qaLgt8HfbCk",
+    "phone": "12345678901",
+    "id": 1,
+    "isEnabled": true,
+    "failedLogins": 0,
+    "createdAt": "2025-09-01T00:37:55.000Z",
+    "updatedAt": "2025-09-01T00:37:55.000Z",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiQnJ1Y2UxV2F1Z3luZSIsImVtYWlsIjoiQnJ1Y2dndGVXYXluZUBnbWFpbC5jb20iLCJpZCI6MX0sImlhdCI6MTc1NjY4NzA4MCwiZXhwIjoxNzU2Njg4ODgwfQ.E0uqVlryTfavLvQIYEEIHvpgV3HgYGrB0uR0SS96fao",
+    "old_password": "qaLgt8HfbCk",
     "new_password": "Test12345@"
 }

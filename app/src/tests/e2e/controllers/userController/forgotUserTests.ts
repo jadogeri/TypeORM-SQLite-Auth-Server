@@ -26,7 +26,7 @@ export const forgotUserTests = () => {
                 const {password} = res.body
                 let updatedUser = {...user, password : password, old_password : password, new_password:"Test12345@" }
                 localStorage.setItem("userdatabase", JSON.stringify(updatedUser, null , 2))
-                fileWriter(__dirname + "/../../../__mocks__/updatedUser.json" , JSON.stringify(updatedUser, null, 4) )
+                fileWriter(__dirname + "/../../../__mocks__/user.json" , JSON.stringify(updatedUser, null, 4) )
 
 
                 expect(res.statusCode).toEqual(200);

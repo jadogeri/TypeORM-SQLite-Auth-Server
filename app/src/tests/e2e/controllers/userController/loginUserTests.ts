@@ -20,12 +20,12 @@ export const loginUserTests = () => {
         if(res.statusCode < 400){
 
           let data = localStorage.getItem("userdatabase")
-          fileReader(__dirname + "/../../../__mocks__/registeredUser.json");
+          fileReader(__dirname + "/../../../__mocks__/user.json");
           let registeredUser = await JSON.parse(data as string)
 
           const updatedUser = {...registeredUser , token : accessToken}
 
-          fileWriter(__dirname + "/../../../__mocks__/updatedUser.json" , JSON.stringify(updatedUser, null, 4) )
+          fileWriter(__dirname + "/../../../__mocks__/user.json" , JSON.stringify(updatedUser, null, 4) )
           localStorage.setItem("userdatabase",JSON.stringify(updatedUser, null, 4));  
 
         }          

@@ -17,6 +17,8 @@ import { AppDataSource } from "../../data-source";
 import { IncomingMessage, Server, ServerResponse } from "http";
 import { loginUserTests } from "./controllers/userController/loginUserTests";
 import { forgotUserTests } from "./controllers/userController/forgotUserTests";
+import { loginUpdatedUserTests } from "./controllers/userController/loginUpdatedUserTests";
+import { currentUserTests } from "./controllers/userController/currentUserTests";
 
 let server : Server<typeof IncomingMessage, typeof ServerResponse> ;
 let app = express()
@@ -73,9 +75,11 @@ describe('POST /users', () => {
 
    global.localStorage = new LocalStorage('./src/tests/storage');
 
-  registerUserTests()
-  loginUserTests()
-  forgotUserTests()
+  registerUserTests();
+  loginUserTests();
+  forgotUserTests();
+  loginUpdatedUserTests();
+  currentUserTests();
   // test('should create a new user', async () => {
   //   const newUser  : IUser=    {
   //       username : "John1D0e",

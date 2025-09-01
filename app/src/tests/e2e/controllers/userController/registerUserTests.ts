@@ -13,7 +13,7 @@ export const registerUserTests = () => {
       const res = await request(BASE_URL).post('/users/register').send(newUser as IUser)   
       //add new json file to __mocks__ directory
       if(!res.error)
-      fileWriter(__dirname + "/../../../__mocks__/registeredUser.json" , JSON.stringify(res.body, null, 4) )
+      fileWriter(__dirname + "/../../../__mocks__/user.json" , JSON.stringify(res.body, null, 4) )
       localStorage.setItem("userdatabase",JSON.stringify(res.body, null, 4));  
 
       //expect(res.body).toHaveProperty('id');

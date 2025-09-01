@@ -14,16 +14,16 @@ export const forgotUserTests = () => {
 
                 let initUser = localStorage.getItem("userdatabase"); 
                 
-                const user = JSON.parse(initUser as string)
+                let user = JSON.parse(initUser as string)
 
                 const {email, old_password, new_password} = user
 
                 const res = await request(BASE_URL).post(`/users/reset`)
                         .send({email : email, old_password : old_password, new_password: new_password});
                 const {password} = res.body
-                let updatedUser = {...user, password : user.new_password, old_password : "" };
-                localStorage.setItem("userdatabase", JSON.stringify(updatedUser, null , 2))
-                fileWriter(__dirname + "/../../../__mocks__/updatedUser.json" , JSON.stringify(updatedUser, null, 4) )
+                user = {...user, password : user.new_password, old_password: ""};
+                localStorage.setItem("userdatabase", JSON.stringify(user, null , 2))
+                fileWriter(__dirname + "/../../../__mocks__/user.json" , JSON.stringify(user, null, 4) )
                 
                 expect(res.statusCode).toEqual(200);
                 expect(res.body.password).toBe(user.new_password);
