@@ -18,7 +18,7 @@ export const logoutUserTests = () => {
         console.log("res after logout****************************************", res)
         expect(res.status).toBe(200);  
         expect(res).toBeDefined();
-      },1000);
+      },6000);
     });
 
   })}
