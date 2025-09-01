@@ -97,29 +97,6 @@ describe('POST /users', () => {
   deleteAllItemsTests()
   logoutUserTests()
   deactivateUserTests()
-  // test('should create a new user', async () => {
-  //   const newUser  : IUser=    {
-  //       username : "John1D0e",
-  //       email :  "BruceWayne@gmail.com",
-  //       password : "b@tMob1LeG0th",
-  //       phone : "12345678901"
-
-  //   };
-  //     const res = await request(BASE_URL).post('/users/register').send(newUser)    
-  //  //expect(res.body).toHaveProperty('id');
-  //   expect(res.body.failedLogins).toBe(0);
-  //   expect(res.body.email).toBe(newUser.email);
-
-  //   // const response = await request(app)
-  
-  //   //   .post('/users/register')
-  //   //   .send(newUser)
-  //   //   //.expect(201);
-  //   //   console.log(response.body)
-
-  //   // expect(response.body).toHaveProperty('id');
-  //   // expect(response.body.failedLogins).toBe(0);
-  //   // expect(response.body.email).toBe(newUser.email);
 
   //   // Verify data in the database
   //   // const createdUser = await getRepository(User).findOne({ where: { email: newUser.email } });

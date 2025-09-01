@@ -3,11 +3,12 @@ import { IUser } from "../interfaces/IUser";
 import { userRepository } from "../repositories/userRepository";
 
 
+
 /**
- * Creates a new user in the database.
- * @param user - An object implementing the IUser interface representing the user to be created.
+ * Saves a new user to the repository and returns the created user object.
+ * @param user - The user object to be created, adhering to the IUser interface.
  * @returns A promise that resolves to the created user object.
- * @throws Throws an error if the user creation fails due to validation or database issues.
+ * @throws Will throw an error if the user cannot be saved to the repository.
  */
 async function create(user : IUser) {
 
@@ -15,10 +16,11 @@ async function create(user : IUser) {
   return createdUser;
 }
 
+
 /**
  * Retrieves a user from the database by their email address.
- * @param email - The email address of the user to find.
- * @returns A promise that resolves to the user object or null if not found.
+ * @param email - The email address of the user to be retrieved.
+ * @returns A Promise that resolves to a User object or null if not found.
  * @throws Throws an error if the database query fails.
  */
 async function getByEmail(email : string) {
@@ -26,24 +28,18 @@ async function getByEmail(email : string) {
   return user;
 }
 
+
 /**
- * Updates a user document in the database by its ID. 
- * If the user does not exist, a new document will be created. 
- * @param _id - The ID of the user to update. 
- * @param user - The user data to update or insert. 
- * @returns A promise that resolves to the updated or created user document. 
- * @throws MongooseError if the update operation fails.
+ * Saves the provided user object to the repository.
+ * @param user - The user object to be updated or created in the repository.
+ * @returns A promise that resolves to the saved user object.
+ * @throws Throws an error if the save operation fails.
  */
 async function update(user : User) {
   return await userRepository.save(user)
 }
 
-/**
- * Deletes a user from the database by their unique identifier.
- * @param _id - The ObjectId of the user to be deleted.
- * @returns A promise that resolves to the deleted user document or null if not found.
- * @throws MongooseError if there is an issue with the database operation.
- */
+
 async function remove(id : number) {
   return await userRepository.delete({id: id})
 }
