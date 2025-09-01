@@ -1,14 +1,14 @@
 {
     "username": "Bruce1Waugyne",
     "email": "BrucggteWayne@gmail.com",
-    "password": "DVpwaNCi9xt",
+    "password": "CVtA6qgrCtq",
     "phone": "12345678901",
     "id": 1,
     "isEnabled": true,
     "failedLogins": 0,
-    "createdAt": "2025-09-01T02:01:48.000Z",
-    "updatedAt": "2025-09-01T02:01:48.000Z",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiQnJ1Y2UxV2F1Z3luZSIsImVtYWlsIjoiQnJ1Y2dndGVXYXluZUBnbWFpbC5jb20iLCJpZCI6MX0sImlhdCI6MTc1NjY5MjExMSwiZXhwIjoxNzU2NjkzOTExfQ.zeQGYBtyg1aRbJmp3c_t_rBTdx7MHtbmqe65IBGIuXk",
-    "old_password": "DVpwaNCi9xt",
+    "createdAt": "2025-09-01T02:27:27.000Z",
+    "updatedAt": "2025-09-01T02:27:27.000Z",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoiQnJ1Y2UxV2F1Z3luZSIsImVtYWlsIjoiQnJ1Y2dndGVXYXluZUBnbWFpbC5jb20iLCJpZCI6MX0sImlhdCI6MTc1NjY5MzY0OSwiZXhwIjoxNzU2Njk1NDQ5fQ.CNSOlm9s14lH4ljxtfVXbjVuO6C8eKqRoOPc0X6Ri30",
+    "old_password": "CVtA6qgrCtq",
     "new_password": "Test12345@"
 }
