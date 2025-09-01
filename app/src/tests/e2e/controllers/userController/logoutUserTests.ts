@@ -10,23 +10,25 @@ export const logoutUserTests = () => {
       test('should logout user credentials with valid JWT token', async () => {
 
         let stringdata = localStorage.getItem("userdatabase")
-        console.log("string data logout****************************************", stringdata)
-
         const userdata =  await JSON.parse(stringdata as string)
+        const {token} = await userdata
 
-          console.log("ruser json data****************************************", userdata)
+        const res = await request(BASE_URL).post('/users/logout')
+          .send({token: token})
 
-
-        //const res = await request(BASE_URL).post('/users/logout').set('Authorization', `Bearer ${userdata.token}`)
-let res = {}
-        console.log("res after logout****************************************", res)
-        userdata.token = "";
+        userdata.token = null
 
         fileWriter(__dirname + "/../../../__mocks__/user.json" , JSON.stringify(userdata, null, 4) )
         localStorage.setItem("userdatabase",JSON.stringify(userdata, null, 4));  
 
-        //expect(res.status).toBe(200);  
+        expect(res.status).toBe(200);  
         expect(res).toBeDefined();
+        expect(res.body.message).toBeDefined();
+        expect(res.body.message).toMatch('logout the user');
+
+
       },6000);
 
   })}
+
+

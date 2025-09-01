@@ -27,6 +27,7 @@ import { deleteAllItemsTests } from "./controllers/itemController/deleteAllItems
 import { updateItemTests } from "./controllers/itemController/updateItemTests";
 import { logoutUserTests } from "./controllers/userController/logoutUserTests";
 import { fileWriter } from "../fileWriter";
+import { fileRemover } from "../fileRemover";
 
 let server : Server<typeof IncomingMessage, typeof ServerResponse> ;
 let app = express()
@@ -69,8 +70,8 @@ beforeAll( async () => {
 
 afterAll(()=>{
 
-  //localStorage.clear()
-  //fileWriter(__dirname + "/../__mocks__/user.json" , "{}")
+  localStorage.clear()
+  fileRemover(__dirname + "/../__mocks__/user.json" );
 
 
 
@@ -88,8 +89,8 @@ describe('POST /users', () => {
 
    global.localStorage = new LocalStorage('./src/tests/storage');
 
-  registerUserTests();
-  loginUserTests();
+   registerUserTests();
+   loginUserTests();
   forgotUserTests();
   loginUpdatedUserTests();
   currentUserTests();
@@ -99,7 +100,7 @@ describe('POST /users', () => {
   updateItemTests()
   deleteSingleItemTests()
   deleteAllItemsTests()
-  //logoutUserTests()
+  logoutUserTests()
   // test('should create a new user', async () => {
   //   const newUser  : IUser=    {
   //       username : "John1D0e",
