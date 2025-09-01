@@ -6,30 +6,27 @@ import { fileWriter } from '../../../fileWriter';
 
 export const forgotUserTests = () => {
 
-    describe('login User Tests', () => {
+    describe('Reset User Tests', () => {
 
         describe('Happy Paths', () => {
 
-            test('should generate new password', async () => {
+            test('reset user password', async () => {
 
                 let initUser = localStorage.getItem("userdatabase"); 
                 
-                console.log("data with my email", initUser)
-
                 const user = JSON.parse(initUser as string)
 
-                const { email} = user
+                const {email, old_password, new_password} = user
 
-                const res = await request(BASE_URL).post(`/users/forgot`).send({email : email});
-
-                console.log("data retrieved from test == ",JSON.stringify(res.body), typeof res.body)
+                const res = await request(BASE_URL).post(`/users/reset`)
+                        .send({email : email, old_password : old_password, new_password: new_password});
                 const {password} = res.body
-                let updatedUser = {...user, password : password, old_password : password, new_password:"Test12345@" }
+                let updatedUser = {...user, password : user.new_password, old_password : "" };
                 localStorage.setItem("userdatabase", JSON.stringify(updatedUser, null , 2))
                 fileWriter(__dirname + "/../../../__mocks__/updatedUser.json" , JSON.stringify(updatedUser, null, 4) )
-
-
+                
                 expect(res.statusCode).toEqual(200);
+                expect(res.body.password).toBe(user.new_password);
                 expect(res.body).toBeDefined();
                 expect(password).toBeDefined()
 
