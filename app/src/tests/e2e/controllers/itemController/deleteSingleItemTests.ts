@@ -5,7 +5,6 @@ import { fileWriter } from '../../../fileWriter';
 
 export const deleteSingleItemTests = () => {
   describe('Delete Single Item Tests', () => {
-
     test.each([
       ["ferrari", 4],
       ["rolls royce", 5],

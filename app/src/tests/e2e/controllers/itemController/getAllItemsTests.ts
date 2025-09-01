@@ -5,7 +5,7 @@ import { BASE_URL } from '../../../setupTests';
 export const getAllItemsTests = () => {
   describe('Get All Items Tests', () => {
 
-    test('Should Get A;; items (cars) successfully', async () => {
+    test('Should Get All items (cars) successfully', async () => {
       let userDatabaseAsString = localStorage.getItem("userdatabase") 
       const userDatabase = await JSON.parse(userDatabaseAsString as string);
       const res = await request(BASE_URL)
