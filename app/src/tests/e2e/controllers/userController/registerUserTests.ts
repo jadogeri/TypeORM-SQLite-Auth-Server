@@ -12,10 +12,11 @@ export const registerUserTests = () => {
       const newUser = userArray[0]
       const res = await request(BASE_URL).post('/users/register').send(newUser as IUser)   
       //add new json file to __mocks__ directory
-      if(!res.error)
-      fileWriter(__dirname + "/../../../__mocks__/user.json" , JSON.stringify(res.body, null, 4) )
-      localStorage.setItem("userdatabase",JSON.stringify(res.body, null, 4));  
-
+      if(!res.error){
+        let createdUser = {...res.body, salted_password: res.body.password, password: newUser.password, }
+      fileWriter(__dirname + "/../../../__mocks__/user.json" , JSON.stringify(createdUser, null, 4) )
+      localStorage.setItem("userdatabase",JSON.stringify(createdUser, null, 4));  
+      }
       //expect(res.body).toHaveProperty('id');
       expect(res.body.failedLogins).toBe(0);
       expect(res.body.email).toBe(newUser.email);
