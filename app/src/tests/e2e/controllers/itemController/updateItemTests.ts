@@ -21,7 +21,7 @@ export const updateItemTests = () => {
       expect(response.message).toBeDefined();
       expect(response.message).toMatch(`updated item id '${id}' of user '${userDatabase.username}' `);
 
-    });
+    },6000);
 
   });
   

@@ -59,7 +59,7 @@ export const loginUserTests = () => {
       expect(res.status).toBe(400);
       expect(res.body.message).toBe("email or password is incorrect");    
     
-    },10000);
+    },6000);
 
     test('should handle multiple login attempts with invalid password', async () => {
       let mockObj = userArray[1]
@@ -71,7 +71,7 @@ export const loginUserTests = () => {
       expect(res.status).toBe(423);
       expect(res.text).toContain("Account is locked beacause of too many failed login attempts. Use forget account to access acount");    
     
-    },10000);
+    },6000);
 
   });
 /*

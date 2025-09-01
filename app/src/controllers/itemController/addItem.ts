@@ -37,7 +37,7 @@ export const addItem = asyncHandler(async (req: IItemCreateRequest, res : Respon
     //check database if email is already taken
     await ItemService.create(Item)
     .then((newItem : IItem)=>{
-      console.log("new Item : ",newItem,typeof newItem);
+      // console.log("new Item : ",newItem,typeof newItem);
       res.status(201).json(newItem);
     })   
     .catch((error: unknown)=>{

@@ -24,9 +24,7 @@ import Validator from '@josephadogeridev/auth-credential-validator-ts';
 
 export const registerUser = asyncHandler(async (req : Request, res: Response) => {
 
-  const { username, email, password, phone} : IUser  = req.body as IUser;
-
-  
+  const { username, email, password, phone} : IUser  = req.body as IUser;  
  
   if (!username || !email || !password) {
     errorBroadcaster(res,400,"All fields are mandatory!")
@@ -54,8 +52,6 @@ export const registerUser = asyncHandler(async (req : Request, res: Response) =>
     const createdUser = await userService.create({username, email, password : hashedPassword, phone})
 
     res.status(201).json(createdUser);
-
-
   }catch(error : unknown){
     exceptionHandler(error, errorBroadcaster, res);  
   }

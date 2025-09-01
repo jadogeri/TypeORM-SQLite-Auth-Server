@@ -43,7 +43,7 @@ export const createItemTests = () => {
       expect(item.createdAt).toBeDefined();
       expect(item.updatedAt).toBeDefined();
 
-    });
+    },6000);
 
   });
   

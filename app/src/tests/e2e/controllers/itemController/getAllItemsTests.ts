@@ -19,7 +19,7 @@ export const getAllItemsTests = () => {
       expect(items[0].createdAt).toBeDefined();
       expect(items[0].updatedAt).toBeDefined();
 
-    });
+    },6000);
 
   });
   

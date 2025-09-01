@@ -44,7 +44,7 @@ export const getItem = asyncHandler(async (req : IJwtPayload, res: Response)  =>
       if(!item){
         res.status(400).json("item does not exist");
       }
-      console.log(JSON.stringify(item,null,3))    
+      // console.log(JSON.stringify(item,null,3))    
       res.status(200).json(item);
     }
     else{

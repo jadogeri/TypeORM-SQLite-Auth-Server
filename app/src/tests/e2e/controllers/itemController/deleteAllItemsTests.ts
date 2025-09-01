@@ -19,7 +19,7 @@ export const deleteAllItemsTests = () => {
       expect(response).toBeDefined();
       expect(response.message).toMatch(`deleted all items of user id : ${userDatabase.id}`);
 
-    });
+    },6000);
 
   });
   

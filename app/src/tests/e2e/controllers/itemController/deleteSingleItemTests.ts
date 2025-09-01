@@ -28,7 +28,7 @@ export const deleteSingleItemTests = () => {
       expect(response).toBeDefined();
       expect(response.message).toMatch(`deleted item id '${id}' `);
 
-    });
+    },6000);
 
   });
   

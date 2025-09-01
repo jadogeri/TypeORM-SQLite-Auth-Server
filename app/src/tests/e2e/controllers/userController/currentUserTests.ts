@@ -20,7 +20,7 @@ export const currentUserTests = () => {
         expect(res.status).toBe(200);  
         expect(res.body.username).toBe(user.username);
         expect(res.body.email).toBe(user.email);      
-      },1000);
+      },6000);
     });
 
   })}

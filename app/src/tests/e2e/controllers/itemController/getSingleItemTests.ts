@@ -18,7 +18,7 @@ export const getSingleItemTests = () => {
       expect(item.createdAt).toBeDefined();
       expect(item.updatedAt).toBeDefined();
 
-    });
+    },6000);
 
   });
   

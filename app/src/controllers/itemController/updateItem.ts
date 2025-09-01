@@ -43,7 +43,7 @@ export const updateItem = asyncHandler(async (req : IJwtPayload, res: Response) 
     if(!user){
       res.status(400).json("user does not exist");
     }
-    console.log("user in database", JSON.stringify(user, null, 4))
+    // console.log("user in database", JSON.stringify(user, null, 4))
     const item : Item | null  = await itemService.getByUserId(itemId, user as User) ;
     if(!item){
       res.status(400).json("item does not exist");

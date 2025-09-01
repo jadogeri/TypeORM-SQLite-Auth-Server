@@ -25,7 +25,7 @@ export const getItems = asyncHandler(async (req : IJwtPayload, res: Response)  =
   try{
     if(req.user){
       const items : Item[] = await itemService.getAll(req);
-      console.log(JSON.stringify(items,null,3))    
+      // console.log(JSON.stringify(items,null,3))    
       res.status(200).json(items);
     }
     else{

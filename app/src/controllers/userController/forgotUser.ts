@@ -47,10 +47,8 @@ export const forgotUser = asyncHandler(async (req: Request, res : Response) => {
       // Using the alphanumeric dictionary
       const uuid = generateRandomUUID(size)  
 
-      console.log("uuid === ", uuid);
       //hash generated password
       const hashedPassword : string = await bcrypt.hash(uuid , parseInt(process.env.BCRYPT_SALT_ROUNDS as string));
-      console.log("Hashed Password: ", hashedPassword);
       //store generated password in database and unlock account
       const updatedUser : User = {...user, password : hashedPassword, failedLogins : 0, isEnabled : true }
 

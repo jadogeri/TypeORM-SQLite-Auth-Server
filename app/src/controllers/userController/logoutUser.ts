@@ -26,7 +26,6 @@ export const logoutUser = asyncHandler(async (req: Request, res : Response) => {
       errorBroadcaster(res,400,"field token is mandatory");
     } 
     const authenticatedUser = await authService.getByToken(token as string)
-    console.log("authenticateduser===================", authenticatedUser);
     if(!authenticatedUser){
       res.status(401).json({ message: "Already logged out" });
     }

@@ -19,23 +19,23 @@ const validateToken = asyncHandler(async (req : IJwtPayload, res: Response, next
   try{
     let token;
     let authHeader = req.headers.authorization as string;
-    console.log("authheader = ", authHeader)
+    // console.log("authheader = ", authHeader)
   
     if (!authHeader || !authHeader.startsWith("Bearer")|| !authHeader.split(" ")[1].trim()) {
       res.status(401).json("User not authorized or token missing");
     }
     else{
       token = authHeader.split(" ")[1];  
-      console.log('isExpired is:', isJwtTokenExpired(token));
+      // console.log('isExpired is:', isJwtTokenExpired(token));
       if(isJwtTokenExpired(token)){
-        console.error("token has expired")
+        // console.error("token has expired")
         res.status(401).json("token has expired");
       }
 
       const decoded =  jwt.verify(token, process.env.JSON_WEB_TOKEN_SECRET as jwt.Secret)
     
-      console.log("decoded = ", decoded)
-      console.log('Decoded token :', decode(token));
+      // console.log("decoded = ", decoded)
+      // console.log('Decoded token :', decode(token));
       const decodedPayload =  jwtDecode<IJwtPayload>(token);
       const {user}  = decodedPayload
       if(decoded ){
