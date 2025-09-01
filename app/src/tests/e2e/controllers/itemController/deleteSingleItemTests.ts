@@ -29,11 +29,6 @@ export const deleteSingleItemTests = () => {
       expect(response).toBeDefined();
       expect(response.message).toMatch(`deleted item id '${id}' `);
 
-      // expect(item.id).toEqual(1)
-      // expect(item.name).toBe("lambo");
-      // expect(item.createdAt).toBeDefined();
-      // expect(item.updatedAt).toBeDefined();
-
     });
 
   });

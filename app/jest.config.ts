@@ -15,7 +15,10 @@ export default {
   setupFilesAfterEnv: ['<rootDir>/setup.ts'],
   globalSetup: '<rootDir>/src/tests/global-teardown.ts',
   testRunner: "jest-circus/runner",
-  workerIdleMemoryLimit: "512MB"
+  workerIdleMemoryLimit: "512MB",
+  coveragePathIgnorePatterns: [
+      "<rootDir>/src/tests/"
+  ]
 
 };
 

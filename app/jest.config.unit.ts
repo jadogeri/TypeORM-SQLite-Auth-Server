@@ -12,7 +12,13 @@ export default {
   },
   transformIgnorePatterns: ["/node_modules/(?!(@josephadogeridev/auth-credential-validator-ts)/)"],
   globalTeardown: '<rootDir>/src/tests/global-teardown-unit.ts',
-  setupFilesAfterEnv: ['<rootDir>/setup.unit.ts']
+  setupFilesAfterEnv: ['<rootDir>/setup.unit.ts'],
+  globalSetup: '<rootDir>/src/tests/global-teardown.ts',
+  testRunner: "jest-circus/runner",
+  workerIdleMemoryLimit: "512MB",
+  coveragePathIgnorePatterns: [
+      "<rootDir>/src/tests/"
+  ]
 
 };
 
