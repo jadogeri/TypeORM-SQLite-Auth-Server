@@ -25,6 +25,7 @@ import { getSingleItemTests } from "./controllers/itemController/getSingleItemTe
 import { deleteSingleItemTests } from "./controllers/itemController/deleteSingleItemTests";
 import { deleteAllItemsTests } from "./controllers/itemController/deleteAllItemsTests";
 import { updateItemTests } from "./controllers/itemController/updateItemTests";
+import { logoutUserTests } from "./controllers/userController/logoutUserTests";
 
 let server : Server<typeof IncomingMessage, typeof ServerResponse> ;
 let app = express()
@@ -92,6 +93,7 @@ describe('POST /users', () => {
   updateItemTests()
   deleteSingleItemTests()
   deleteAllItemsTests()
+  logoutUserTests()
   // test('should create a new user', async () => {
   //   const newUser  : IUser=    {
   //       username : "John1D0e",

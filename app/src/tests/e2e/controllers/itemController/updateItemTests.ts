@@ -1,8 +1,6 @@
 import {  test, describe,  expect } from '@jest/globals';
 import request from 'supertest';
 import { BASE_URL } from '../../../setupTests';
-import { fileWriter } from '../../../fileWriter';
-
 export const updateItemTests = () => {
 
   describe('Update Single Item Tests', () => {
