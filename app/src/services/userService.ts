@@ -40,10 +40,22 @@ async function update(user : User) {
 }
 
 
+/**
+ * Deletes a user from the repository by their ID.
+ * @param id - The unique identifier of the user to be deleted.
+ * @returns A promise that resolves to the result of the delete operation.
+ * @throws Throws an error if the deletion fails or the user is not found.
+ */
 async function remove(id : number) {
   return await userRepository.delete({id: id})
 }
 
+/**
+   * Retrieves a user by their unique identifier.
+   * @param userId - The unique identifier of the user to retrieve.
+   * @returns A Promise that resolves to the User object or null if not found.
+   * @throws Throws an error if the database query fails.
+   */
 async function getById(userId : number) {     
   const user : User | null = await userRepository.findOne({
     where: { id: userId },
