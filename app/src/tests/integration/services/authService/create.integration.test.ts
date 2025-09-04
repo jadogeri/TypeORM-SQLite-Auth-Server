@@ -25,20 +25,33 @@ class MockauthRepository {
   public save = jest.fn();
 }
 
+// Replace the actual authRepository with our mock
+let mockauthRepository: MockauthRepository;
+
+
 // Replace the actual authRepository with our mock in the module under test
-jest.mock("../../repositories/authRepository", () => {
+jest.mock("../../../../repositories/authRepository", () => {
   // Singleton instance for test control
-  const instance = new MockauthRepository();
-  return {
-    authRepository: instance,
+    return {
+    authRepository: {} as any,
   };
+  // const instance = new MockauthRepository();
+  // return {
+  //   authRepository: instance,
+  // };
 });
 describe('create() create method', () => {
   // Happy Path Tests
   describe('Happy Paths', () => {
     beforeEach(() => {
       // Reset mock state before each test
-      jest.clearAllMocks();
+      //jest.clearAllMocks();
+      mockauthRepository = new MockauthRepository();
+    // @ts-ignore
+    // Patch the imported userRepository to use our mock
+    const authRepoModule = require('../../../../repositories/authRepository');
+    authRepoModule.authRepository = mockauthRepository as any;
+  
     });
 
     it('should save a valid auth object with all properties and return the saved value', async () => {
@@ -145,7 +158,7 @@ describe('create() create method', () => {
 
       const result = await create(mockAuthObj as any);
 
-      expect(authRepository.save).toHaveBeenCalledWith(mockAuthObj as any);
+      expect(authRepository.save).toHaveBeenCalledWith(mockAuthObj as any);+
       expect(result).toBe(mockAuthObj);
     });
 

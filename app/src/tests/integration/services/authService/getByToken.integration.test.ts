@@ -22,7 +22,7 @@ class MockauthRepository {
   public findOne = jest.fn();
 }
 
-// Replace the actual userRepository with our mock
+// Replace the actual authRepository with our mock
 let mockauthRepository: MockauthRepository;
 
 
@@ -43,9 +43,7 @@ jest.mock("../../../../repositories/authRepository", () => {
 describe('getByToken() getByToken method', () => {
   // Happy Paths
   describe('Happy paths', () => {
-    // beforeEach(() => {
-    //   jest.clearAllMocks();
-    // });
+
     beforeEach(() => {
   mockauthRepository = new MockauthRepository();
   // @ts-ignore
