@@ -6,12 +6,23 @@ import { itemRepository } from "../repositories/itemRepository";
 import { IJwtPayload } from "../interfaces/IJWTPayload";
 import { IItem } from "../interfaces/IItem";
 
+/**
+ * Retrieves all items associated with the specified user.
+ * @param req - The request object containing user information from the JWT payload.
+ * @returns A promise that resolves to an array of Item objects or null if no items are found.
+ * @throws Throws an error if the database query fails.
+ */
 async function getAll(req : IJwtPayload) {
   const items : Item[] | null = await itemRepository.find({ where: { user: { id: req.user.id }},
   });
   return items;
 }
 
+/**
+ * Retrieves an item by its unique identifier from the repository.
+ * @param itemId - The unique identifier of the item to retrieve.
+ * @returns The item if found, otherwise null. May throw an error if the repository query fails.
+ */
 async function getById(itemId : number) {
   const item : Item | null = await itemRepository.findOne({
     where: { id: itemId },
@@ -19,6 +30,13 @@ async function getById(itemId : number) {
   return item;
 }
 
+/**
+   * Retrieves an item by its ID for a specific user.
+   * @param itemId - The ID of the item to retrieve.
+   * @param user - The user object associated with the item.
+   * @returns The item if found, otherwise null.
+   * @throws Throws an error if the database query fails.
+   */
 async function getByUserId(itemId : number, user: User) {
   const item : Item | null = await itemRepository.findOne({
     where: { id: itemId, user: { id: user.id } },
@@ -27,6 +45,13 @@ async function getByUserId(itemId : number, user: User) {
 }
 
 
+
+/**
+ * Saves a new item to the repository and returns the created item.
+ * @param item - The item to be created, adhering to the IItem interface.
+ * @returns The created item or null if the save operation fails.
+ * @throws Throws an error if the save operation encounters an issue.
+ */
 async function create(item : IItem) {
   const createdItem : Item | null = await itemRepository.save(item);
 //  console.log("created item\n", JSON.stringify(createdItem, null, 4))

@@ -4,13 +4,14 @@ import { User } from "../entities/User";
 import { authRepository } from "../repositories/authRepository";
 
 
+
+
 /**
  * Retrieves the authentication record associated with a given user ID.
  * @param userId - The ID of the user for whom to retrieve the authentication record.
  * @returns A promise that resolves to the Auth object or null if not found.
  * @throws Throws an error if the database query fails.
  */
-
 async function getByUserId(userId : number) {
   const auth : Auth | null = await authRepository.findOne({
   where: { user: { id: userId }},
@@ -59,11 +60,23 @@ async function update(auth : IAuth ) {
 }
 
 
+
+/**
+ * Removes a user from the authentication repository.
+ * @param user - The User object representing the user to be removed.
+ * @returns A promise that resolves when the user is successfully deleted.
+ * @throws Throws an error if the deletion fails.
+ */
 async function removeByUser(user: User) {
   return await authRepository.delete({user: user});
 }
 
-
+/**
+ * Deletes an authentication record by its ID.
+ * @param id - The unique identifier of the authentication record to be deleted.
+ * @returns A promise that resolves to the result of the deletion operation.
+ * @throws Will throw an error if the deletion fails.
+ */
 async function remove(id: number) {
   return await authRepository.delete({id: id});
 }

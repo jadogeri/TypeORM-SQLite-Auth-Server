@@ -4,7 +4,7 @@ import request from 'supertest';
 import { BASE_URL } from '../../../setupTests';
 import { fileWriter } from '../../../fileWriter';
 
-export const forgotUserTests = () => {
+export const resetUserTests = () => {
 
     describe('Reset User Tests', () => {
 
@@ -29,6 +29,48 @@ export const forgotUserTests = () => {
             expect(password).toBeDefined()
 
         },6000)
+
+        describe('Edge cases', () => {
+            
+            test('Should throw Errot if credentials are missing', async () => {
+
+                let user = {
+                    email:"Johndoe1@forest.com",
+                    new_password: "password@P1"
+                }
+                
+
+                const {email, new_password} = user
+
+                const res = await request(BASE_URL).post(`/users/reset`)
+                        .send({email : email, new_password: new_password});
+ 
+                
+                expect(res.statusCode).toEqual(400);
+                expect(res.body.password).toBeUndefined();
+            },6000)
+
+            test('Should throw Errot if email is invalid', async () => {
+
+                let user = {
+                    email:"email@com",
+                    new_password: "password@P1"
+                }
+                
+
+                const {email, new_password} = user
+
+                const res = await request(BASE_URL).post(`/users/reset`)
+                        .send({email : email, new_password: new_password});
+ 
+                console.log("res error*******************************",res.error)
+                expect(res.statusCode).toEqual(400);
+                expect(res.body.password).toBeUndefined();
+                expect(res.error).toBeDefined();
+
+            },6000);
+
+        })
 
     })
 }
