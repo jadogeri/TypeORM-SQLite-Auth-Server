@@ -59,6 +59,13 @@ async function create(item : IItem) {
   return  createdItem;
 }
 
+/**
+ * Updates an item in the repository with the provided payload.
+ * @param itemId - The unique identifier of the item to be updated.
+ * @param payload - The new data to update the item with.
+ * @returns A promise that resolves to the result of the update operation.
+ * @throws Throws an error if the update operation fails.
+ */
 async function update(itemId : number,payload : IItem) {
     return itemRepository.update(
       {id : itemId}, // Filter
@@ -66,10 +73,25 @@ async function update(itemId : number,payload : IItem) {
   );
 }
 
+/**
+ * Deletes all items associated with the user specified in the request payload.
+ * 
+ * @param req - The request payload containing user information.
+ * @returns A promise that resolves to the result of the delete operation.
+ * @throws Throws an error if the delete operation fails.
+ */
 async function removeAll(req : IJwtPayload) {
   return itemRepository.delete({ user: { id: req.user.id } });
 }
 
+/**
+ * Deletes an item from the repository based on the provided item ID and user ID from the request payload.
+ * 
+ * @param itemId - The ID of the item to be deleted.
+ * @param req - The request payload containing user information.
+ * @returns A promise that resolves to the result of the delete operation.
+ * @throws Throws an error if the item cannot be found or if the user is not authorized to delete it.
+ */
 async function deleteByUserId(itemId: number, req : IJwtPayload) {
   return itemRepository.delete({ id: itemId, user: { id: req.user.id } });
 }
