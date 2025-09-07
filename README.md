@@ -109,7 +109,7 @@ The system will allow users to:
 
 ## **2. API Reference**
 
-* [Link to Documentation ](https://documenter.getpostman.com/view/40822092/2sAYXEEdwL)
+* [Link to Documentation ](https://documenter.getpostman.com/view/40822092/2sB3Hkr1dz)
 
 ## **3. System Architecture**
 
@@ -161,16 +161,13 @@ The system follows a **three-tier architecture**:
 * [Download and install NodeJS](https://nodejs.org/en/download)
 * [Download and install Docker - Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
 * [Download and install Docker - Mac](https://docs.docker.com/desktop/setup/install/mac-install/)
-* [Create Google account](https://google.com/)
-* [Generate Google account App Password](https://support.google.com/mail/thread/205453566/how-to-generate-an-app-password?hl=en)
-* [Twilio Account - API for SMS (Optional)](https://www.twilio.com/en-us/messaging/programmable-messaging-api)
 * [PostMan - API Testing](https://www.postman.com/downloads/)
 
 ---
 
 ## **6. Usage**
 
-**Prerequisites** :installation of NodeJS
+**Prerequisites** :Installation of NodeJS
 
 ### **6.1 Run Application**
 
@@ -250,11 +247,7 @@ The system follows a **three-tier architecture**:
 
 **Prerequisites** :ensure container or local application is running.
 
-**Note** : use `<a href="#2-api-reference">`API Reference `</a>` docs for testing endpoints.
-
-#### **7.1.1 Postman Environment Variables**
-
-![postmanenv](assets/images/postman_env.png)
+**Note** : use <a href="#2-api-reference">`API Reference` </a> docs for testing endpoints.
 
 ---
 
